@@ -667,6 +667,46 @@
                 font-size: 80px;
             }
         }
+        @media (max-width: 768px) {
+            .content, .stats-section, .action-section, .video-feed-section { padding: 50px 16px; }
+            .impact-card { padding: 24px; }
+            .icon { font-size: 3em; }
+            .stat-number { font-size: 2.2em; }
+            .stat-label { font-size: 1em; }
+            .action-button { padding: 12px 28px; font-size: 1em; letter-spacing: 1px; }
+            .video-container::before { top: 12px; left: 12px; font-size: 1em; }
+            .video-container::after { bottom: 10px; left: 10px; font-size: 0.8em; }
+            .news-ticker { padding: 8px 0; }
+            .ticker-content { font-size: 0.95em; }
+            .hero { padding: 16px; min-height: 80vh; }
+            .scroll-indicator { bottom: 15px; font-size: 1.6em; }
+            h2 { font-size: 2em !important; }
+            h3 { font-size: 1.4em !important; }
+            p { font-size: 1em !important; }
+            #game-area { grid-template-columns: repeat(6, 1fr) !important; }
+            #network-container { min-height: 380px !important; padding: 24px !important; }
+            #tree-age { font-size: 3em !important; }
+            #tree-story { font-size: 1.2em !important; }
+            #tree-year { font-size: 2em !important; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8em; letter-spacing: 1px; }
+            .tree-animation { font-size: 64px; }
+            .action-button { width: 100%; max-width: 100%; margin: 8px 0; }
+            .impact-grid { gap: 20px; }
+            .stats-grid { gap: 20px; }
+            .video-container { border-width: 1px; }
+            .icon { font-size: 2.5em; }
+            .stat-number { font-size: 2em; }
+            .news-ticker { font-size: 0.9em; }
+            .ticker-content { padding-left: 50%; }
+            #game-area { grid-template-columns: repeat(4, 1fr) !important; }
+            #network-container { min-height: 320px !important; padding: 16px !important; }
+            #tree-age { font-size: 2.5em !important; }
+            #tree-story { font-size: 1.05em !important; }
+            #tree-year { font-size: 1.6em !important; }
+            #grow-btn { font-size: 1.05em !important; padding: 12px 24px !important; }
+        }
     </style>
 </head>
 <body>
