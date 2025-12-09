@@ -1563,8 +1563,8 @@
             const totalValue = document.getElementById('total-value');
 
             function formatIdrUnits(millions){
-                if (millions >= 1000000) return { num: millions/1000000, suffix: ' triliun' };
-                if (millions >= 1000) return { num: millions/1000, suffix: ' miliar' };
+                if (millions >= 1000000) return { num: millions/1000000, suffix: ' Triliun' };
+                if (millions >= 1000) return { num: millions/1000, suffix: ' Miliar' };
                 return { num: millions, suffix: 'juta' };
             }
             function setCurrencyValue(id, millions){
