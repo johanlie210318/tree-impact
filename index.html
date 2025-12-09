@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Power of One Tree</title>
+    <title></title>
     <style>
             * {
                 margin: 0;
@@ -713,12 +713,28 @@
             #tree-network > div > div { font-size: 2em !important; }
             #network-info { padding: 12px !important; }
         }
+        .lang-toggle {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 1001;
+            padding: 10px 14px;
+            border-radius: 20px;
+            background: rgba(0, 243, 255, 0.15);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+        }
     </style>
     </head>
-    <body>
+<body>
+    <button id="lang-toggle" class="lang-toggle">ID</button>
         <div class="hero">
             <div class="tree-animation">🌳</div>
-            <h1 class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
+        <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
             <p class="subtitle" style="letter-spacing: 1px; color: #00f3ff;">// INITIALIZING_ECO_SYSTEM_PROTOCOL...</p>
             <div class="scroll-indicator">↓</div>
         </div>
@@ -739,8 +755,8 @@
 
         <div class="content">
             <div class="container">
-                <h2 style="text-align: center; font-size: 2.5em; margin-bottom: 20px; color: #667eea;">What Does One Tree Do?</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px; color: #666;">The impact of a single tree is more powerful than you think</p>
+        <h2 id="impact-title" style="text-align: center; font-size: 2.5em; margin-bottom: 20px; color: #667eea;">What Does One Tree Do?</h2>
+        <p id="impact-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 40px; color: #666;">The impact of a single tree is more powerful than you think</p>
                 
                 <div class="impact-grid">
                     <div class="impact-card">
@@ -784,25 +800,25 @@
 
         <div class="stats-section">
             <div class="container">
-                <h2 style="font-size: 3em; margin-bottom: 20px;">The Numbers Don't Lie</h2>
-                <p style="font-size: 1.3em; opacity: 0.9;">What one tree accomplishes in its lifetime</p>
+        <h2 id="stats-title" style="font-size: 3em; margin-bottom: 20px;">The Numbers Don't Lie</h2>
+        <p id="stats-subtitle" style="font-size: 1.3em; opacity: 0.9;">What one tree accomplishes in its lifetime</p>
                 
                 <div class="stats-grid">
                     <div class="stat-item">
                         <span class="stat-number">260 lbs</span>
-                        <span class="stat-label">Oxygen produced yearly</span>
+                    <span class="stat-label" id="stat-label-oxygen">Oxygen produced yearly</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">10°F</span>
-                        <span class="stat-label">Temperature reduction</span>
+                    <span class="stat-label" id="stat-label-temp">Temperature reduction</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">100+</span>
-                        <span class="stat-label">Species supported</span>
+                    <span class="stat-label" id="stat-label-species">Species supported</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">1,000L</span>
-                        <span class="stat-label">Water absorbed daily</span>
+                    <span class="stat-label" id="stat-label-water">Water absorbed daily</span>
                     </div>
                 </div>
             </div>
@@ -810,7 +826,7 @@
 
         <div class="crisis-section">
             <div class="container">
-                <h2>⚠️ The Crisis in Sumatra</h2>
+            <h2 id="crisis-title">⚠️ The Crisis in Sumatra</h2>
                 <p>Massive flooding in Sumatra has caused devastating casualties and displacement of thousands of families. This disaster is directly linked to widespread deforestation in the region.</p>
                 <p>Without tree roots to absorb water and hold soil, rainwater rushes down hillsides uncontrolled, causing catastrophic floods and landslides.</p>
                 <p><strong>The loss of forests means the loss of lives. Every tree removed is a piece of our natural flood defense system destroyed.</strong></p>
@@ -819,8 +835,8 @@
 
         <div style="background: #1a1a2e; padding: 80px 20px; color: white;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px;">🧬 The Hidden Network: Trees Talk to Each Other</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px; opacity: 0.9;">Click on a tree to see the underground fungal network that connects them</p>
+                <h2 id="network-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">🧬 The Hidden Network: Trees Talk to Each Other</h2>
+                <p id="network-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px; opacity: 0.9;">Click on a tree to see the underground fungal network that connects them</p>
                 
                 <div id="network-container" style="background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); border-radius: 20px; padding: 40px; min-height: 500px; position: relative; overflow: hidden;">
                     <div style="border-bottom: 3px dashed #8B4513; margin-bottom: 20px; padding-bottom: 20px;">
@@ -831,7 +847,7 @@
                     
                     <div style="margin-top: 30px; position: relative; z-index: 2;">
                         <div id="network-info" style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; min-height: 120px; backdrop-filter: blur(10px);">
-                            <p style="font-size: 1.2em; text-align: center;">👆 Click any tree above to see how they communicate through underground fungal networks called "mycorrhizal networks"</p>
+                            <p id="network-info-default" style="font-size: 1.2em; text-align: center;">👆 Click any tree above to see how they communicate through underground fungal networks called "mycorrhizal networks"</p>
                         </div>
                     </div>
                 </div>
@@ -845,8 +861,8 @@
 
         <div style="background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); padding: 80px 20px; color: white;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px;">👁️ See Through Tree Eyes</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Experience what a tree experiences during deforestation</p>
+                <h2 id="perspective-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">👁️ See Through Tree Eyes</h2>
+                <p id="perspective-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Experience what a tree experiences during deforestation</p>
                 
                 <div style="background: rgba(0,0,0,0.3); border-radius: 20px; padding: 40px; backdrop-filter: blur(10px);">
                     <div id="tree-perspective" style="text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
@@ -866,28 +882,28 @@
 
         <div style="background: white; padding: 80px 20px;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px; color: #667eea;">🔊 The Sound of Forests</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px; color: #666;">Listen to what deforestation actually sounds like</p>
+                <h2 id="sound-title" style="text-align: center; font-size: 3em; margin-bottom: 30px; color: #667eea;">🔊 The Sound of Forests</h2>
+                <p id="sound-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px; color: #666;">Listen to what deforestation actually sounds like</p>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                     <div style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); padding: 40px; border-radius: 20px; text-align: center; color: white;">
                         <div style="font-size: 5em; margin-bottom: 20px;">🎵</div>
-                        <h3 style="font-size: 1.8em; margin-bottom: 20px;">Healthy Forest</h3>
-                        <button class="sound-btn" data-sound="forest" style="padding: 15px 30px; background: white; color: #11998e; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1em;">🔊 Play Sounds</button>
+                        <h3 id="sound-forest-title" style="font-size: 1.8em; margin-bottom: 20px;">Healthy Forest</h3>
+                        <button class="sound-btn" id="sound-forest-btn" data-sound="forest" style="padding: 15px 30px; background: white; color: #11998e; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1em;">🔊 Play Sounds</button>
                         <p style="margin-top: 20px; opacity: 0.9;">Birds, insects, rustling leaves, flowing water</p>
                     </div>
                     
                     <div style="background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%); padding: 40px; border-radius: 20px; text-align: center; color: white;">
                         <div style="font-size: 5em; margin-bottom: 20px;">🪚</div>
-                        <h3 style="font-size: 1.8em; margin-bottom: 20px;">Active Logging</h3>
-                        <button class="sound-btn" data-sound="logging" style="padding: 15px 30px; background: white; color: #b92b27; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1em;">🔊 Play Sounds</button>
+                        <h3 id="sound-logging-title" style="font-size: 1.8em; margin-bottom: 20px;">Active Logging</h3>
+                        <button class="sound-btn" id="sound-logging-btn" data-sound="logging" style="padding: 15px 30px; background: white; color: #b92b27; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1em;">🔊 Play Sounds</button>
                         <p style="margin-top: 20px; opacity: 0.9;">Chainsaws, falling trees, machinery, destruction</p>
                     </div>
                     
                     <div style="background: linear-gradient(135deg, #4b4b4b 0%, #2d2d2d 100%); padding: 40px; border-radius: 20px; text-align: center; color: white;">
                         <div style="font-size: 5em; margin-bottom: 20px;">🔇</div>
-                        <h3 style="font-size: 1.8em; margin-bottom: 20px;">After Deforestation</h3>
-                        <button class="sound-btn" data-sound="silence" style="padding: 15px 30px; background: white; color: #2d2d2d; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1em;">🔊 Play Sounds</button>
+                        <h3 id="sound-silence-title" style="font-size: 1.8em; margin-bottom: 20px;">After Deforestation</h3>
+                        <button class="sound-btn" id="sound-silence-btn" data-sound="silence" style="padding: 15px 30px; background: white; color: #2d2d2d; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1em;">🔊 Play Sounds</button>
                         <p style="margin-top: 20px; opacity: 0.9;">Eerie silence, wind on bare ground, no life</p>
                     </div>
                 </div>
@@ -901,65 +917,65 @@
 
         <div style="background: #16213e; padding: 80px 20px; color: white;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px;">💰 The Hidden Economy: What We Lost in Sumatra</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Trees provide FREE services worth billions. Calculate what was destroyed.</p>
+                <h2 id="economy-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">💰 The Hidden Economy: What We Lost in Sumatra</h2>
+                <p id="economy-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Trees provide FREE services worth billions. Calculate what was destroyed.</p>
                 
                 <div style="background: rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px);">
                     <div style="text-align: center; margin-bottom: 30px;">
-                        <label style="font-size: 1.3em; margin-bottom: 15px; display: block;">How many trees were cut down in your estimate?</label>
+                        <label id="tree-slider-label" style="font-size: 1.3em; margin-bottom: 15px; display: block;">How many trees were cut down in your estimate?</label>
                         <input type="range" id="tree-slider" min="1000" max="1000000" value="50000" step="1000" style="width: 100%; max-width: 600px; height: 10px; cursor: pointer;">
                         <div style="font-size: 2.5em; font-weight: bold; margin-top: 15px; color: #ff6b6b;"><span id="tree-count-display">50,000</span> trees</div>
                     </div>
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 40px;">
                         <div style="background: rgba(39, 174, 96, 0.3); padding: 25px; border-radius: 15px; border: 2px solid #27ae60;">
-                            <div style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Annual Oxygen Value</div>
-                            <div style="font-size: 2em; font-weight: bold;">$<span id="oxygen-value">0</span>M</div>
+                        <div id="oxygen-label" style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Annual Oxygen Value</div>
+                        <div style="font-size: 2em; font-weight: bold;"><span class="currency-symbol">$</span><span id="oxygen-value">0</span><span class="currency-suffix">M</span></div>
                         </div>
                         <div style="background: rgba(52, 152, 219, 0.3); padding: 25px; border-radius: 15px; border: 2px solid #3498db;">
-                            <div style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Flood Prevention Value</div>
-                            <div style="font-size: 2em; font-weight: bold;">$<span id="flood-value">0</span>M</div>
+                        <div id="flood-label" style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Flood Prevention Value</div>
+                        <div style="font-size: 2em; font-weight: bold;"><span class="currency-symbol">$</span><span id="flood-value">0</span><span class="currency-suffix">M</span></div>
                         </div>
                         <div style="background: rgba(155, 89, 182, 0.3); padding: 25px; border-radius: 15px; border: 2px solid #9b59b6;">
-                            <div style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Air Purification Value</div>
-                            <div style="font-size: 2em; font-weight: bold;">$<span id="air-value">0</span>M</div>
+                        <div id="air-label" style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Air Purification Value</div>
+                        <div style="font-size: 2em; font-weight: bold;"><span class="currency-symbol">$</span><span id="air-value">0</span><span class="currency-suffix">M</span></div>
                         </div>
                         <div style="background: rgba(230, 126, 34, 0.3); padding: 25px; border-radius: 15px; border: 2px solid #e67e22;">
-                            <div style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Carbon Storage Value</div>
-                            <div style="font-size: 2em; font-weight: bold;">$<span id="carbon-value">0</span>M</div>
+                        <div id="carbon-label" style="font-size: 1.1em; opacity: 0.9; margin-bottom: 10px;">Carbon Storage Value</div>
+                        <div style="font-size: 2em; font-weight: bold;"><span class="currency-symbol">$</span><span id="carbon-value">0</span><span class="currency-suffix">M</span></div>
                         </div>
                     </div>
                     
                     <div style="margin-top: 40px; text-align: center; background: rgba(231, 76, 60, 0.3); padding: 30px; border-radius: 15px; border: 2px solid #e74c3c;">
-                        <div style="font-size: 1.5em; margin-bottom: 15px;">TOTAL ANNUAL ECONOMIC LOSS</div>
-                        <div style="font-size: 4em; font-weight: bold; color: #ff6b6b;">$<span id="total-value">0</span>M</div>
+                        <div id="total-loss-label" style="font-size: 1.5em; margin-bottom: 15px;">TOTAL ANNUAL ECONOMIC LOSS</div>
+                        <div style="font-size: 4em; font-weight: bold; color: #ff6b6b;"><span class="currency-symbol">$</span><span id="total-value">0</span><span class="currency-suffix">M</span></div>
                         <p style="font-size: 1.1em; margin-top: 20px; opacity: 0.9;">This is what the destroyed forest would have provided FOR FREE every single year. Forever.</p>
                     </div>
                 </div>
 
                 <div style="margin-top: 40px; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px;">
-                    <h3 style="font-size: 1.8em; margin-bottom: 15px;">🏦 Nature's Free Services</h3>
-                    <p style="font-size: 1.1em; line-height: 1.8;">A single mature tree provides approximately $73-100 USD worth of ecological services per year. The forests destroyed in Sumatra were providing hundreds of millions of dollars worth of flood protection, water filtration, oxygen production, and climate regulation - completely free. Now that they're gone, communities must pay for artificial flood barriers, water treatment plants, and suffer the cost of disasters. Deforestation isn't just an environmental issue - it's economic suicide.</p>
+                    <h3 id="economy-explain-title" style="font-size: 1.8em; margin-bottom: 15px;">🏦 Nature's Free Services</h3>
+                    <p id="economy-explain-text" style="font-size: 1.1em; line-height: 1.8;">A single mature tree provides approximately $73-100 USD worth of ecological services per year. The forests destroyed in Sumatra were providing hundreds of millions of dollars worth of flood protection, water filtration, oxygen production, and climate regulation - completely free. Now that they're gone, communities must pay for artificial flood barriers, water treatment plants, and suffer the cost of disasters. Deforestation isn't just an environmental issue - it's economic suicide.</p>
                 </div>
             </div>
         </div>
 
         <div style="background: white; padding: 80px 20px;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px; color: #667eea;">⏳ Time Travel: Your Tree Decision</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px; color: #666;">Make a choice today. See its impact in the future.</p>
+                <h2 id="timeline-title" style="text-align: center; font-size: 3em; margin-bottom: 30px; color: #667eea;">⏳ Time Travel: Your Tree Decision</h2>
+                <p id="timeline-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px; color: #666;">Make a choice today. See its impact in the future.</p>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                     <div id="timeline-protect" style="background: linear-gradient(to bottom, #e8f5e9, #c8e6c9); padding: 40px; border-radius: 20px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 3px solid #4caf50;">
-                        <h3 style="font-size: 2em; color: #2e7d32; margin-bottom: 20px; text-align: center;">🌳 Protect & Plant</h3>
+                        <h3 id="protect-title" style="font-size: 2em; color: #2e7d32; margin-bottom: 20px; text-align: center;">🌳 Protect & Plant</h3>
                         <div style="text-align: center; font-size: 4em; margin: 20px 0;">🌱➡️🌳</div>
-                        <button onclick="showFuture('protect')" style="width: 100%; padding: 15px; background: #4caf50; color: white; border: none; border-radius: 10px; font-size: 1.2em; cursor: pointer; font-weight: bold;">See 2050 ➡️</button>
+                        <button id="protect-btn" onclick="showFuture('protect')" style="width: 100%; padding: 15px; background: #4caf50; color: white; border: none; border-radius: 10px; font-size: 1.2em; cursor: pointer; font-weight: bold;">See 2050 ➡️</button>
                     </div>
                     
                     <div id="timeline-ignore" style="background: linear-gradient(to bottom, #ffebee, #ffcdd2); padding: 40px; border-radius: 20px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 3px solid #f44336;">
-                        <h3 style="font-size: 2em; color: #c62828; margin-bottom: 20px; text-align: center;">🪓 Continue Cutting</h3>
+                        <h3 id="ignore-title" style="font-size: 2em; color: #c62828; margin-bottom: 20px; text-align: center;">🪓 Continue Cutting</h3>
                         <div style="text-align: center; font-size: 4em; margin: 20px 0;">🌳➡️🪵</div>
-                        <button onclick="showFuture('ignore')" style="width: 100%; padding: 15px; background: #f44336; color: white; border: none; border-radius: 10px; font-size: 1.2em; cursor: pointer; font-weight: bold;">See 2050 ➡️</button>
+                        <button id="ignore-btn" onclick="showFuture('ignore')" style="width: 100%; padding: 15px; background: #f44336; color: white; border: none; border-radius: 10px; font-size: 1.2em; cursor: pointer; font-weight: bold;">See 2050 ➡️</button>
                     </div>
                 </div>
 
@@ -971,22 +987,22 @@
 
         <div style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%); padding: 80px 20px; color: white;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px;">🎮 Reforestation Challenge Game</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Can you restore the forest before the next rainy season?</p>
+                <h2 id="game-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">🎮 Reforestation Challenge Game</h2>
+                <p id="game-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Can you restore the forest before the next rainy season?</p>
                 
                 <div style="background: rgba(0,0,0,0.3); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px);">
                     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
                         <div style="text-align: center;">
-                            <div style="font-size: 1.2em; opacity: 0.9;">Trees Planted</div>
+                            <div id="label-planted" style="font-size: 1.2em; opacity: 0.9;">Trees Planted</div>
                             <div style="font-size: 3em; font-weight: bold;"><span id="game-planted">0</span> / 100</div>
                         </div>
                         <div style="text-align: center;">
-                            <div style="font-size: 1.2em; opacity: 0.9;">Days Until Rain</div>
+                            <div id="label-days" style="font-size: 1.2em; opacity: 0.9;">Days Until Rain</div>
                             <div style="font-size: 3em; font-weight: bold;"><span id="game-days">30</span></div>
                         </div>
                         <div style="text-align: center;">
-                            <div style="font-size: 1.2em; opacity: 0.9;">Budget</div>
-                            <div style="font-size: 3em; font-weight: bold;">$<span id="game-budget">1000</span></div>
+                            <div id="label-budget" style="font-size: 1.2em; opacity: 0.9;">Budget</div>
+                            <div style="font-size: 3em; font-weight: bold;"><span class="currency-symbol">$</span><span id="game-budget">1000</span></div>
                         </div>
                     </div>
 
@@ -1003,25 +1019,25 @@
                 </div>
 
                 <div style="margin-top: 40px; background: rgba(255,255,255,0.2); padding: 30px; border-radius: 15px;">
-                    <h3 style="font-size: 1.8em; margin-bottom: 15px;">🎯 Mission</h3>
-                    <p style="font-size: 1.1em; line-height: 1.8;">Sumatra needs reforestation NOW. You have 30 days and $1000 to plant 100 trees before the rainy season. Each tree costs $10, but you can use Fast Grow for $50 to make saplings mature instantly. The clock is ticking - every day that passes brings the rains closer. Can you save the community from the next flood?</p>
+                    <h3 id="game-mission-title" style="font-size: 1.8em; margin-bottom: 15px;">🎯 Mission</h3>
+                    <p id="game-mission-desc" style="font-size: 1.1em; line-height: 1.8;">Sumatra needs reforestation NOW. You have 30 days and $1000 to plant 100 trees before the rainy season. Each tree costs $10, but you can use Fast Grow for $50 to make saplings mature instantly. The clock is ticking - every day that passes brings the rains closer. Can you save the community from the next flood?</p>
                 </div>
             </div>
         </div>
 
         <div class="action-section">
             <div class="container">
-                <h2>Take Action Today</h2>
-                <p style="font-size: 1.3em; margin-bottom: 40px;">Every action counts. Start making a difference now.</p>
-                <a href="#" class="action-button" onclick="alert('Plant native trees in your community, support reforestation programs, reduce paper consumption, and spread awareness about the importance of trees!'); return false;">Learn How to Help</a>
-                <a href="#" class="action-button" onclick="alert('Share this message on social media, talk to your friends and family, contact local officials, and support environmental organizations!'); return false;">Spread the Word</a>
+                <h2 id="action-title">Take Action Today</h2>
+                <p id="action-subtitle" style="font-size: 1.3em; margin-bottom: 40px;">Every action counts. Start making a difference now.</p>
+                <a href="#" class="action-button" id="action-help-btn">Learn How to Help</a>
+                <a href="#" class="action-button" id="action-share-btn">Spread the Word</a>
             </div>
         </div>
 
         <div style="background: #2c3e50; padding: 80px 20px; color: white;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 50px;">🌍 Interactive: Deforestation Simulator</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Click the trees to cut them down. Watch what happens to the land.</p>
+                <h2 id="sim-title" style="text-align: center; font-size: 3em; margin-bottom: 50px;">🌍 Interactive: Deforestation Simulator</h2>
+                <p id="sim-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Click the trees to cut them down. Watch what happens to the land.</p>
                 
                 <div id="simulator" style="background: linear-gradient(to bottom, #87CEEB 0%, #98D8C8 50%, #8B4513 100%); border-radius: 20px; padding: 40px; min-height: 400px; position: relative; overflow: hidden;">
                     <div id="forest-area" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 30px;"></div>
@@ -1033,15 +1049,15 @@
                         <div style="display: flex; justify-content: space-around; margin-top: 20px; flex-wrap: wrap; gap: 20px;">
                             <div style="background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 10px;">
                                 <div style="font-size: 2em;">💧</div>
-                                <div>Water Absorption: <span id="water-absorption">100%</span></div>
+                                <div id="label-water-abs">Water Absorption: <span id="water-absorption">100%</span></div>
                             </div>
                             <div style="background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 10px;">
                                 <div style="font-size: 2em;">⛰️</div>
-                                <div>Soil Stability: <span id="soil-stability">100%</span></div>
+                                <div id="label-soil-stability">Soil Stability: <span id="soil-stability">100%</span></div>
                             </div>
                             <div style="background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 10px;">
                                 <div style="font-size: 2em;">⚠️</div>
-                                <div>Flood Risk: <span id="flood-risk">Low</span></div>
+                                <div id="label-flood-risk">Flood Risk: <span id="flood-risk">Low</span></div>
                             </div>
                         </div>
                         <button id="reset-btn" style="margin-top: 30px; padding: 15px 40px; font-size: 1.2em; background: #27ae60; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold;">🌱 Reforest the Land</button>
@@ -1057,7 +1073,7 @@
 
         <div style="background: white; padding: 80px 20px;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #667eea;">🔄 Before & After: Real Impact</h2>
+                <h2 id="before-after-title" style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #667eea;">🔄 Before & After: Real Impact</h2>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                     <div style="text-align: center;">
@@ -1089,22 +1105,22 @@
 
         <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 80px 20px; color: white;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px;">⏱️ Your Daily Tree Counter</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">See what ONE tree does for you RIGHT NOW</p>
+                <h2 id="daily-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">⏱️ Your Daily Tree Counter</h2>
+                <p id="daily-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">See what ONE tree does for you RIGHT NOW</p>
                 
                 <div style="background: rgba(255,255,255,0.2); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px);">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
                         <div>
                             <div style="font-size: 3em; font-weight: bold;"><span id="oxygen-counter">0</span> L</div>
-                            <div style="font-size: 1.1em; margin-top: 10px;">Oxygen produced today</div>
+                            <div id="oxygen-today-label" style="font-size: 1.1em; margin-top: 10px;">Oxygen produced today</div>
                         </div>
                         <div>
                             <div style="font-size: 3em; font-weight: bold;"><span id="co2-counter">0</span> kg</div>
-                            <div style="font-size: 1.1em; margin-top: 10px;">CO₂ absorbed today</div>
+                            <div id="co2-today-label" style="font-size: 1.1em; margin-top: 10px;">CO₂ absorbed today</div>
                         </div>
                         <div>
                             <div style="font-size: 3em; font-weight: bold;"><span id="water-counter">0</span> L</div>
-                            <div style="font-size: 1.1em; margin-top: 10px;">Water filtered today</div>
+                            <div id="water-today-label" style="font-size: 1.1em; margin-top: 10px;">Water filtered today</div>
                         </div>
                     </div>
                     <p style="text-align: center; margin-top: 30px; font-size: 1.1em; opacity: 0.9;">⏰ These numbers update in real-time based on the current hour of the day</p>
@@ -1186,26 +1202,50 @@
                 soilStability.textContent = Math.round(percentage) + '%';
                 waterLevel.style.height = floodHeight + 'px';
                 
-                if (treeCount > 15) {
-                    floodRisk.textContent = 'Low';
-                    floodRisk.style.color = '#27ae60';
-                    statusMessage.textContent = '✅ Healthy forest protecting the land';
-                } else if (treeCount > 10) {
-                    floodRisk.textContent = 'Medium';
-                    floodRisk.style.color = '#f39c12';
-                    statusMessage.textContent = '⚠️ Forest degradation detected';
-                } else if (treeCount > 5) {
-                    floodRisk.textContent = 'High';
-                    floodRisk.style.color = '#e67e22';
-                    statusMessage.textContent = '🚨 Dangerous deforestation levels';
-                } else if (treeCount > 0) {
-                    floodRisk.textContent = 'Critical';
-                    floodRisk.style.color = '#e74c3c';
-                    statusMessage.textContent = '💀 Disaster imminent - severe flooding expected';
+                if (window.currentLang === 'id') {
+                    if (treeCount > 15) {
+                        floodRisk.textContent = 'Rendah';
+                        floodRisk.style.color = '#27ae60';
+                        statusMessage.textContent = '✅ Hutan sehat melindungi tanah';
+                    } else if (treeCount > 10) {
+                        floodRisk.textContent = 'Sedang';
+                        floodRisk.style.color = '#f39c12';
+                        statusMessage.textContent = '⚠️ Degradasi hutan terdeteksi';
+                    } else if (treeCount > 5) {
+                        floodRisk.textContent = 'Tinggi';
+                        floodRisk.style.color = '#e67e22';
+                        statusMessage.textContent = '🚨 Tingkat deforestasi berbahaya';
+                    } else if (treeCount > 0) {
+                        floodRisk.textContent = 'Kritis';
+                        floodRisk.style.color = '#e74c3c';
+                        statusMessage.textContent = '💀 Bencana segera terjadi - banjir parah diperkirakan';
+                    } else {
+                        floodRisk.textContent = 'BENCANA';
+                        floodRisk.style.color = '#c0392b';
+                        statusMessage.textContent = '🌊 KEHANCURAN TOTAL - Inilah yang terjadi di Sumatra';
+                    }
                 } else {
-                    floodRisk.textContent = 'DISASTER';
-                    floodRisk.style.color = '#c0392b';
-                    statusMessage.textContent = '🌊 COMPLETE DEVASTATION - This is what happened in Sumatra';
+                    if (treeCount > 15) {
+                        floodRisk.textContent = 'Low';
+                        floodRisk.style.color = '#27ae60';
+                        statusMessage.textContent = '✅ Healthy forest protecting the land';
+                    } else if (treeCount > 10) {
+                        floodRisk.textContent = 'Medium';
+                        floodRisk.style.color = '#f39c12';
+                        statusMessage.textContent = '⚠️ Forest degradation detected';
+                    } else if (treeCount > 5) {
+                        floodRisk.textContent = 'High';
+                        floodRisk.style.color = '#e67e22';
+                        statusMessage.textContent = '🚨 Dangerous deforestation levels';
+                    } else if (treeCount > 0) {
+                        floodRisk.textContent = 'Critical';
+                        floodRisk.style.color = '#e74c3c';
+                        statusMessage.textContent = '💀 Disaster imminent - severe flooding expected';
+                    } else {
+                        floodRisk.textContent = 'DISASTER';
+                        floodRisk.style.color = '#c0392b';
+                        statusMessage.textContent = '🌊 COMPLETE DEVASTATION - This is what happened in Sumatra';
+                    }
                 }
             }
 
@@ -1514,16 +1554,15 @@
                 const treeCount = parseInt(treeSlider.value);
                 treeCountDisplay.textContent = treeCount.toLocaleString();
                 
-                // Economic values per tree per year (in USD)
-                const oxygenPerTree = 20; // $20 worth of oxygen
-                const floodPrevPerTree = 25; // $25 worth of flood prevention
-                const airPurifyPerTree = 15; // $15 worth of air purification
-                const carbonPerTree = 13; // $13 worth of carbon storage
-                
-                const oxygen = (treeCount * oxygenPerTree / 1000000).toFixed(2);
-                const flood = (treeCount * floodPrevPerTree / 1000000).toFixed(2);
-                const air = (treeCount * airPurifyPerTree / 1000000).toFixed(2);
-                const carbon = (treeCount * carbonPerTree / 1000000).toFixed(2);
+                const oxygenPerTree = 20;
+                const floodPrevPerTree = 25;
+                const airPurifyPerTree = 15;
+                const carbonPerTree = 13;
+                const scale = window.currentLang === 'id' ? 16000 : 1;
+                const oxygen = (treeCount * oxygenPerTree * scale / 1000000).toFixed(2);
+                const flood = (treeCount * floodPrevPerTree * scale / 1000000).toFixed(2);
+                const air = (treeCount * airPurifyPerTree * scale / 1000000).toFixed(2);
+                const carbon = (treeCount * carbonPerTree * scale / 1000000).toFixed(2);
                 const total = (parseFloat(oxygen) + parseFloat(flood) + parseFloat(air) + parseFloat(carbon)).toFixed(2);
                 
                 oxygenValue.textContent = oxygen;
@@ -1531,6 +1570,10 @@
                 airValue.textContent = air;
                 carbonValue.textContent = carbon;
                 totalValue.textContent = total;
+                document.querySelectorAll('.currency-symbol').forEach(el => { el.textContent = window.currentLang === 'id' ? 'Rp' : '$'; });
+                document.querySelectorAll('.currency-suffix').forEach(el => { el.textContent = 'M'; });
+                const treesLabel = window.currentLang === 'id' ? 'pohon' : 'trees';
+                document.querySelector('#tree-count-display').parentElement.innerHTML = `<span id="tree-count-display">${treeCount.toLocaleString()}</span> ${treesLabel}`;
             }
 
             treeSlider.addEventListener('input', calculateEconomicValue);
@@ -1738,6 +1781,98 @@
             }
 
             initGame();
+
+            window.currentLang = 'en';
+            function formatNumber(n) { return window.currentLang === 'id' ? n.toLocaleString('id-ID') : n.toLocaleString('en-US'); }
+            function formatMoneyLongMillions(usdMillions) {
+                if (window.currentLang === 'id') {
+                    const idrMillions = Math.round(usdMillions * 16000);
+                    if (idrMillions >= 1000) {
+                        const trillions = (idrMillions / 1000).toFixed(0);
+                        return `Rp ${formatNumber(parseInt(trillions))} triliun`;
+                    }
+                    return `Rp ${formatNumber(idrMillions)} miliar`;
+                }
+                return `$${usdMillions}M`;
+            }
+            function applyLanguage() {
+                document.getElementById('hero-title').textContent = window.currentLang === 'id' ? 'Kekuatan SATU Pohon' : 'The Power of ONE Tree';
+                document.getElementById('video-title').textContent = window.currentLang === 'id' ? '📡 TRANSMISI MASUK // BANJIR SUMATRA' : '📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS';
+                document.getElementById('impact-title').textContent = window.currentLang === 'id' ? 'Apa yang Dilakukan Satu Pohon?' : 'What Does One Tree Do?';
+                document.getElementById('impact-subtitle').textContent = window.currentLang === 'id' ? 'Dampak satu pohon lebih besar dari yang Anda kira' : 'The impact of a single tree is more powerful than you think';
+                document.getElementById('stats-title').textContent = window.currentLang === 'id' ? 'Angka Berbicara' : "The Numbers Don't Lie";
+                document.getElementById('stats-subtitle').textContent = window.currentLang === 'id' ? 'Apa yang dicapai satu pohon sepanjang hidupnya' : 'What one tree accomplishes in its lifetime';
+                document.getElementById('stat-label-oxygen').textContent = window.currentLang === 'id' ? 'Oksigen per tahun' : 'Oxygen produced yearly';
+                document.getElementById('stat-label-temp').textContent = window.currentLang === 'id' ? 'Penurunan suhu' : 'Temperature reduction';
+                document.getElementById('stat-label-species').textContent = window.currentLang === 'id' ? 'Spesies yang didukung' : 'Species supported';
+                document.getElementById('stat-label-water').textContent = window.currentLang === 'id' ? 'Air diserap per hari' : 'Water absorbed daily';
+                document.getElementById('crisis-title').textContent = window.currentLang === 'id' ? '⚠️ Krisis di Sumatra' : '⚠️ The Crisis in Sumatra';
+                document.getElementById('network-title').textContent = window.currentLang === 'id' ? '🧬 Jaringan Tersembunyi: Pohon Saling Berkomunikasi' : '🧬 The Hidden Network: Trees Talk to Each Other';
+                document.getElementById('network-subtitle').textContent = window.currentLang === 'id' ? 'Klik pohon untuk melihat jaringan jamur bawah tanah yang menghubungkan mereka' : 'Click on a tree to see the underground fungal network that connects them';
+                document.getElementById('network-info-default').textContent = window.currentLang === 'id' ? '👆 Klik pohon di atas untuk melihat bagaimana mereka berkomunikasi melalui jaringan jamur bawah tanah yang disebut "jaringan mikoriza"' : '👆 Click any tree above to see how they communicate through underground fungal networks called "mycorrhizal networks"';
+                document.getElementById('perspective-title').textContent = window.currentLang === 'id' ? '👁️ Lihat Lewat Mata Pohon' : '👁️ See Through Tree Eyes';
+                document.getElementById('perspective-subtitle').textContent = window.currentLang === 'id' ? 'Rasakan apa yang dialami pohon saat deforestasi' : 'Experience what a tree experiences during deforestation';
+                document.getElementById('sound-title').textContent = window.currentLang === 'id' ? '🔊 Suara Hutan' : '🔊 The Sound of Forests';
+                document.getElementById('sound-subtitle').textContent = window.currentLang === 'id' ? 'Dengarkan seperti apa suara deforestasi' : 'Listen to what deforestation actually sounds like';
+                document.getElementById('sound-forest-title').textContent = window.currentLang === 'id' ? 'Hutan Sehat' : 'Healthy Forest';
+                document.getElementById('sound-forest-btn').textContent = window.currentLang === 'id' ? '🔊 Putar Suara' : '🔊 Play Sounds';
+                document.getElementById('sound-logging-title').textContent = window.currentLang === 'id' ? 'Penebangan Aktif' : 'Active Logging';
+                document.getElementById('sound-logging-btn').textContent = window.currentLang === 'id' ? '🔊 Putar Suara' : '🔊 Play Sounds';
+                document.getElementById('sound-silence-title').textContent = window.currentLang === 'id' ? 'Setelah Deforestasi' : 'After Deforestation';
+                document.getElementById('sound-silence-btn').textContent = window.currentLang === 'id' ? '🔊 Putar Suara' : '🔊 Play Sounds';
+                document.getElementById('economy-title').textContent = window.currentLang === 'id' ? '💰 Ekonomi Tersembunyi: Apa yang Kita Kehilangan di Sumatra' : '💰 The Hidden Economy: What We Lost in Sumatra';
+                document.getElementById('economy-subtitle').textContent = window.currentLang === 'id' ? 'Pohon memberi layanan GRATIS bernilai miliaran. Hitung kerugian.' : 'Trees provide FREE services worth billions. Calculate what was destroyed.';
+                document.getElementById('tree-slider-label').textContent = window.currentLang === 'id' ? 'Berapa banyak pohon yang ditebang menurut perkiraan Anda?' : 'How many trees were cut down in your estimate?';
+                document.getElementById('oxygen-label').textContent = window.currentLang === 'id' ? 'Nilai Oksigen Tahunan' : 'Annual Oxygen Value';
+                document.getElementById('flood-label').textContent = window.currentLang === 'id' ? 'Nilai Pencegahan Banjir' : 'Flood Prevention Value';
+                document.getElementById('air-label').textContent = window.currentLang === 'id' ? 'Nilai Pemurnian Udara' : 'Air Purification Value';
+                document.getElementById('carbon-label').textContent = window.currentLang === 'id' ? 'Nilai Penyimpanan Karbon' : 'Carbon Storage Value';
+                document.getElementById('total-loss-label').textContent = window.currentLang === 'id' ? 'TOTAL KERUGIAN EKONOMI TAHUNAN' : 'TOTAL ANNUAL ECONOMIC LOSS';
+                document.getElementById('economy-explain-title').textContent = window.currentLang === 'id' ? '🏦 Layanan Gratis Alam' : "🏦 Nature's Free Services";
+                document.getElementById('economy-explain-text').textContent = window.currentLang === 'id' ? 'Satu pohon dewasa memberikan sekitar 73-100 USD nilai layanan ekologi per tahun. Hutan yang hancur di Sumatra sebelumnya menyediakan ratusan juta dolar perlindungan banjir, penyaringan air, produksi oksigen, dan regulasi iklim secara gratis. Kini komunitas harus membayar pengganti buatan dan menanggung biaya bencana.' : 'A single mature tree provides approximately $73-100 USD worth of ecological services per year. The forests destroyed in Sumatra were providing hundreds of millions of dollars worth of flood protection, water filtration, oxygen production, and climate regulation - completely free. Now that they\'re gone, communities must pay for artificial flood barriers, water treatment plants, and suffer the cost of disasters. Deforestation isn\'t just an environmental issue - it\'s economic suicide.';
+                document.getElementById('timeline-title').textContent = window.currentLang === 'id' ? '⏳ Perjalanan Waktu: Keputusan Anda' : '⏳ Time Travel: Your Tree Decision';
+                document.getElementById('timeline-subtitle').textContent = window.currentLang === 'id' ? 'Buat pilihan hari ini. Lihat dampaknya di masa depan.' : 'Make a choice today. See its impact in the future.';
+                document.getElementById('protect-title').textContent = window.currentLang === 'id' ? '🌳 Lindungi & Tanam' : '🌳 Protect & Plant';
+                document.getElementById('ignore-title').textContent = window.currentLang === 'id' ? '🪓 Terus Menebang' : '🪓 Continue Cutting';
+                document.getElementById('protect-btn').textContent = window.currentLang === 'id' ? 'Lihat 2050 ➡️' : 'See 2050 ➡️';
+                document.getElementById('ignore-btn').textContent = window.currentLang === 'id' ? 'Lihat 2050 ➡️' : 'See 2050 ➡️';
+                document.getElementById('game-title').textContent = window.currentLang === 'id' ? '🎮 Tantangan Reforestasi' : '🎮 Reforestation Challenge Game';
+                document.getElementById('game-subtitle').textContent = window.currentLang === 'id' ? 'Bisakah Anda memulihkan hutan sebelum musim hujan berikutnya?' : 'Can you restore the forest before the next rainy season?';
+                document.getElementById('label-planted').textContent = window.currentLang === 'id' ? 'Pohon Ditanam' : 'Trees Planted';
+                document.getElementById('label-days').textContent = window.currentLang === 'id' ? 'Hari Hingga Hujan' : 'Days Until Rain';
+                document.getElementById('label-budget').textContent = window.currentLang === 'id' ? 'Anggaran' : 'Budget';
+                document.getElementById('plant-tree-btn').textContent = window.currentLang === 'id' ? '🌱 Tanam Pohon (Rp ' + formatNumber(10*16000) + ')' : '🌱 Plant Tree ($10)';
+                document.getElementById('fast-grow-btn').textContent = window.currentLang === 'id' ? '⚡ Tumbuh Cepat (Rp ' + formatNumber(50*16000) + ')' : '⚡ Fast Grow ($50)';
+                document.getElementById('game-mission-title').textContent = window.currentLang === 'id' ? '🎯 Misi' : '🎯 Mission';
+                document.getElementById('game-mission-desc').textContent = window.currentLang === 'id' ? 'Sumatra butuh reforestasi SEKARANG. Anda punya 30 hari dan anggaran Rp ' + formatNumber(1000*16000) + ' untuk menanam 100 pohon sebelum musim hujan. Setiap pohon biaya Rp ' + formatNumber(10*16000) + ', dan Tumbuh Cepat Rp ' + formatNumber(50*16000) + ' untuk membuat bibit langsung dewasa.' : 'Sumatra needs reforestation NOW. You have 30 days and $1000 to plant 100 trees before the rainy season. Each tree costs $10, but you can use Fast Grow for $50 to make saplings mature instantly. The clock is ticking - every day that passes brings the rains closer. Can you save the community from the next flood?';
+                document.getElementById('action-title').textContent = window.currentLang === 'id' ? 'Bertindak Hari Ini' : 'Take Action Today';
+                document.getElementById('action-subtitle').textContent = window.currentLang === 'id' ? 'Setiap tindakan berarti. Mulai bergerak sekarang.' : 'Every action counts. Start making a difference now.';
+                document.getElementById('action-help-btn').textContent = window.currentLang === 'id' ? 'Pelajari Cara Membantu' : 'Learn How to Help';
+                document.getElementById('action-share-btn').textContent = window.currentLang === 'id' ? 'Sebarkan Pesan' : 'Spread the Word';
+                document.getElementById('sim-title').textContent = window.currentLang === 'id' ? '🌍 Interaktif: Simulator Deforestasi' : '🌍 Interactive: Deforestation Simulator';
+                document.getElementById('sim-subtitle').textContent = window.currentLang === 'id' ? 'Klik pohon untuk menebangnya. Lihat dampaknya pada lahan.' : 'Click the trees to cut them down. Watch what happens to the land.';
+                document.getElementById('reset-btn').textContent = window.currentLang === 'id' ? '🌱 Hutan Kembali' : '🌱 Reforest the Land';
+                document.getElementById('label-water-abs').firstChild.textContent = window.currentLang === 'id' ? 'Penyerapan Air: ' : 'Water Absorption: ';
+                document.getElementById('label-soil-stability').firstChild.textContent = window.currentLang === 'id' ? 'Stabilitas Tanah: ' : 'Soil Stability: ';
+                document.getElementById('label-flood-risk').firstChild.textContent = window.currentLang === 'id' ? 'Risiko Banjir: ' : 'Flood Risk: ';
+                document.getElementById('before-after-title').textContent = window.currentLang === 'id' ? '🔄 Sebelum & Sesudah: Dampak Nyata' : '🔄 Before & After: Real Impact';
+                document.getElementById('daily-title').textContent = window.currentLang === 'id' ? '⏱️ Penghitung Pohon Harian' : '⏱️ Your Daily Tree Counter';
+                document.getElementById('daily-subtitle').textContent = window.currentLang === 'id' ? 'Lihat apa yang dilakukan SATU pohon untuk Anda saat ini' : 'See what ONE tree does for you RIGHT NOW';
+                document.getElementById('oxygen-today-label').textContent = window.currentLang === 'id' ? 'Oksigen dihasilkan hari ini' : 'Oxygen produced today';
+                document.getElementById('co2-today-label').textContent = window.currentLang === 'id' ? 'CO₂ diserap hari ini' : 'CO₂ absorbed today';
+                document.getElementById('water-today-label').textContent = window.currentLang === 'id' ? 'Air disaring hari ini' : 'Water filtered today';
+                document.querySelectorAll('.currency-symbol').forEach(el => { el.textContent = window.currentLang === 'id' ? 'Rp' : '$'; });
+                document.querySelectorAll('.currency-suffix').forEach(el => { el.textContent = 'M'; });
+                calculateEconomicValue();
+                const helpMsg = window.currentLang === 'id' ? 'Tanam pohon lokal di komunitas Anda, dukung program reforestasi, kurangi konsumsi kertas, dan sebarkan pentingnya pohon.' : 'Plant native trees in your community, support reforestation programs, reduce paper consumption, and spread awareness about the importance of trees!';
+                const shareMsg = window.currentLang === 'id' ? 'Bagikan pesan ini di media sosial, ajak keluarga dan teman, hubungi pejabat setempat, dan dukung organisasi lingkungan.' : 'Share this message on social media, talk to your friends and family, contact local officials, and support environmental organizations!';
+                document.getElementById('action-help-btn').onclick = function(e){ e.preventDefault(); alert(helpMsg); };
+                document.getElementById('action-share-btn').onclick = function(e){ e.preventDefault(); alert(shareMsg); };
+                const ticker = document.querySelector('.ticker-content');
+                ticker.textContent = window.currentLang === 'id' ? '⚠️ DARURAT: Sumatra kehilangan 1,6 juta hektare hutan (2001-2024). Banjir bandang menewaskan 500+ pada akhir 2025. Ilmuwan memperingatkan keruntuhan ekosistem yang tak dapat dipulihkan. // BERTINDAK SEKARANG untuk mencegah kehancuran lebih lanjut. // "Kehilangan hutan berarti kehilangan nyawa."' : '⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."';
+            }
+            document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
+            applyLanguage();
         </script>
         <div class="scanline"></div>
         <div class="news-ticker">
