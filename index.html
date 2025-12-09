@@ -712,6 +712,9 @@
             #tree-network { flex-wrap: wrap; gap: 12px; justify-content: center !important; }
             #tree-network > div > div { font-size: 2em !important; }
             #network-info { padding: 12px !important; }
+            #game-area { padding: 16px !important; gap: 8px !important; min-height: 240px !important; }
+            #total-value-wrap { font-size: clamp(1.6rem, 7.5vw, 2.6rem) !important; }
+            #game-budget-wrap, #game-planted-wrap, #game-days-wrap { font-size: clamp(1.4rem, 6vw, 2.2rem) !important; }
         }
         .lang-toggle {
             position: fixed;
@@ -946,10 +949,10 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 40px; text-align: center; background: rgba(231, 76, 60, 0.3); padding: 30px; border-radius: 15px; border: 2px solid #e74c3c;">
+                    <div style="margin-top: 40px; text-align: center; background: rgba(231, 76, 60, 0.25); padding: 24px; border-radius: 15px; border: 1px solid rgba(231, 76, 60, 0.6);">
                         <div id="total-loss-label" style="font-size: 1.5em; margin-bottom: 15px;">TOTAL ANNUAL ECONOMIC LOSS</div>
-                        <div style="font-size: 4em; font-weight: bold; color: #ff6b6b;"><span class="currency-symbol">$</span><span id="total-value">0</span><span class="currency-suffix">M</span></div>
-                        <p id="total-loss-desc" style="font-size: 1.1em; margin-top: 20px; opacity: 0.9;">This is what the destroyed forest would have provided FOR FREE every single year. Forever.</p>
+                        <div id="total-value-wrap" style="font-size: clamp(2rem, 8.5vw, 3.2rem); font-weight: 800; color: #ffe6e6; line-height: 1; white-space: normal; word-break: break-word;"><span class="currency-symbol">$</span><span id="total-value">0</span><span class="currency-suffix">M</span></div>
+                        <p id="total-loss-desc" style="font-size: 1.05em; margin-top: 16px; opacity: 0.95;">This is what the destroyed forest would have provided FOR FREE every single year. Forever.</p>
                     </div>
                 </div>
 
@@ -994,15 +997,15 @@
                     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
                         <div style="text-align: center;">
                             <div id="label-planted" style="font-size: 1.2em; opacity: 0.9;">Trees Planted</div>
-                            <div style="font-size: 3em; font-weight: bold;"><span id="game-planted">0</span> / 100</div>
+                            <div id="game-planted-wrap" style="font-size: clamp(1.6rem, 6.5vw, 3em); font-weight: bold;"><span id="game-planted">0</span> / 100</div>
                         </div>
                         <div style="text-align: center;">
                             <div id="label-days" style="font-size: 1.2em; opacity: 0.9;">Days Until Rain</div>
-                            <div style="font-size: 3em; font-weight: bold;"><span id="game-days">30</span></div>
+                            <div id="game-days-wrap" style="font-size: clamp(1.6rem, 6.5vw, 3em); font-weight: bold;"><span id="game-days">30</span></div>
                         </div>
                         <div style="text-align: center;">
                             <div id="label-budget" style="font-size: 1.2em; opacity: 0.9;">Budget</div>
-                            <div style="font-size: 3em; font-weight: bold;"><span class="currency-symbol">$</span><span id="game-budget">1000</span></div>
+                            <div id="game-budget-wrap" style="font-size: clamp(1.6rem, 6.5vw, 3em); font-weight: bold;"><span class="currency-symbol">$</span><span id="game-budget">1000</span></div>
                         </div>
                     </div>
 
@@ -1015,7 +1018,7 @@
                         <button id="reset-game-btn" style="padding: 15px 40px; font-size: 1.2em; background: #e74c3c; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; margin: 10px;">🔄 Reset Game</button>
                     </div>
 
-                    <div id="game-message" style="margin-top: 20px; text-align: center; font-size: 1.3em; min-height: 40px; font-weight: bold;"></div>
+                    <div id="game-message" style="margin-top: 20px; text-align: center; font-size: clamp(1rem, 4.2vw, 1.3em); min-height: 44px; font-weight: bold; color: #ffffff;"></div>
                 </div>
 
                 <div style="margin-top: 40px; background: rgba(255,255,255,0.2); padding: 30px; border-radius: 15px;">
@@ -1706,8 +1709,8 @@
                 const slot = document.createElement('div');
                 slot.style.width = '100%';
                 slot.style.aspectRatio = '1';
-                slot.style.background = 'rgba(255, 255, 255, 0.12)';
-                slot.style.border = '1px solid rgba(255, 255, 255, 0.28)';
+                slot.style.background = 'rgba(255, 255, 255, 0.18)';
+                slot.style.border = '1px solid rgba(255, 255, 255, 0.40)';
                 slot.style.borderRadius = '6px';
                 slot.style.display = 'flex';
                 slot.style.alignItems = 'center';
@@ -1721,10 +1724,10 @@
                 slot.addEventListener('click', () => plantInSlot(slot));
                 
                 slot.addEventListener('mouseenter', () => {
-                    if (slot.dataset.planted === 'false') slot.style.background = 'rgba(255, 255, 255, 0.22)';
+                    if (slot.dataset.planted === 'false') slot.style.background = 'rgba(255, 255, 255, 0.28)';
                 });
                 slot.addEventListener('mouseleave', () => {
-                    if (slot.dataset.planted === 'false') slot.style.background = 'rgba(255, 255, 255, 0.12)';
+                    if (slot.dataset.planted === 'false') slot.style.background = 'rgba(255, 255, 255, 0.18)';
                 });
 
                     gameArea.appendChild(slot);
