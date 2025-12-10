@@ -739,9 +739,10 @@
         }
 
         .main-nav {
-            position: sticky;
+            position: fixed;
             top: 12px;
             left: 12px;
+            right: 84px;
             z-index: 1002;
             display: flex;
             gap: 12px;
@@ -751,8 +752,6 @@
             background: rgba(5, 10, 16, 0.6);
             border: 1px solid #00f3ff;
             backdrop-filter: blur(6px);
-            width: calc(100% - 108px);
-            overflow-x: auto;
         }
 
         .main-nav a {
@@ -769,12 +768,53 @@
             background: rgba(0, 243, 255, 0.15);
         }
 
-        @media (max-width: 768px) {
-            .main-nav { gap: 8px; padding: 6px 8px; width: calc(100% - 84px); }
-            .main-nav a { font-size: 0.9em; padding: 6px 8px; }
+        .menu-toggle {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1003;
+            padding: 10px 14px;
+            border-radius: 20px;
+            background: rgba(0, 243, 255, 0.15);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            display: none;
         }
-        @media (max-width: 480px) {
-            .main-nav a { font-size: 0.8em; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 56px;
+            left: 12px;
+            right: 12px;
+            z-index: 1002;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 24px;
+            background: rgba(5, 10, 16, 0.9);
+            border: 1px solid #00f3ff;
+            backdrop-filter: blur(6px);
+        }
+
+        .mobile-menu a {
+            color: #00f3ff;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 10px 12px;
+            border-radius: 16px;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .menu-toggle { display: inline-block; }
         }
 
         .scroll-top {
@@ -805,6 +845,7 @@
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
+    <button id="menu-toggle" class="menu-toggle">☰</button>
     <nav class="main-nav">
         <a href="#hero">Home</a>
         <a href="#video">Video</a>
@@ -817,19 +858,19 @@
         <a href="#daily">Daily</a>
         <a href="#action">Action</a>
     </nav>
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#hero">Home</a>
+        <a href="#video">Video</a>
+        <a href="#impact">Impact</a>
+        <a href="#economy">Economy</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#game">Game</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#before-after">Before/After</a>
+        <a href="#daily">Daily</a>
+        <a href="#action">Action</a>
+    </div>
         <div id="hero" class="hero">
-            <nav class="main-nav">
-                <a href="#hero">Home</a>
-                <a href="#video">Video</a>
-                <a href="#impact">Impact</a>
-                <a href="#economy">Economy</a>
-                <a href="#timeline">Timeline</a>
-                <a href="#game">Game</a>
-                <a href="#simulator">Simulator</a>
-                <a href="#before-after">Before/After</a>
-                <a href="#daily">Daily</a>
-                <a href="#action">Action</a>
-            </nav>
             <div class="tree-animation">🌳</div>
             <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
             <p id="init-subtitle" class="subtitle" style="letter-spacing: 1px; color: #00f3ff;">// INITIALIZING_ECO_SYSTEM_PROTOCOL...</p>
@@ -2106,6 +2147,12 @@
             document.addEventListener('DOMContentLoaded', function(){
                 bindScrollTop();
                 applyLanguage();
+                const mt = document.getElementById('menu-toggle');
+                const mm = document.getElementById('mobile-menu');
+                if (mt && mm){
+                    mt.addEventListener('click', function(){ mm.classList.toggle('open'); });
+                    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){ mm.classList.remove('open'); }));
+                }
             });
         </script>
         <div class="scanline"></div>
