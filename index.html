@@ -1625,7 +1625,7 @@
                     description: '🪚 Active deforestation: Industrial chainsaws tearing through the silence.',
                     bars: [100, 95, 100, 90, 100, 95, 100, 90, 95, 100, 95, 100, 90, 100, 95],
                     color: '#ff003c',
-                    url: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/WWS_Chainsaw.ogg'
+                    url: 'https://actions.google.com/sounds/v1/tools/chopping_log.ogg'
                 },
                 silence: {
                     description: '🔇 After deforestation: The void where life used to be.',
@@ -1670,6 +1670,12 @@
                 audio.crossOrigin = "anonymous";
                 audio.loop = loop;
                 audio.volume = 0.8;
+                audio.onerror = () => {
+                    try {
+                        audio.src = 'https://actions.google.com/sounds/v1/tools/chopping_log.ogg';
+                        audio.play();
+                    } catch(e) {}
+                };
                 
                 // Connect to AudioContext for potential visualization or filtering
                 const source = audioContext.createMediaElementSource(audio);
