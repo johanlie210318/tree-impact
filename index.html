@@ -2182,6 +2182,7 @@
                 btn.addEventListener('touchstart', handler, { passive: true });
             }
             bindScrollTop();
+            document.readyState === 'complete' ? bindScrollTop() : document.addEventListener('DOMContentLoaded', bindScrollTop);
             document.addEventListener('DOMContentLoaded', function(){
                 bindScrollTop();
                 applyLanguage();
