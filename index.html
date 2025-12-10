@@ -2182,7 +2182,21 @@
                 btn.addEventListener('touchstart', handler, { passive: true });
             }
             bindScrollTop();
-            document.readyState === 'complete' ? bindScrollTop() : document.addEventListener('DOMContentLoaded', bindScrollTop);
+            document.addEventListener('DOMContentLoaded', function(){
+                bindScrollTop();
+                applyLanguage();
+                const mt = document.getElementById('menu-toggle');
+                const mm = document.getElementById('mobile-menu');
+                if (mt && mm){
+                    mt.addEventListener('click', function(){ mm.classList.toggle('open'); });
+                    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){ mm.classList.remove('open'); }));
+                }
+                document.querySelectorAll('.gallery-image').forEach(img => { img.addEventListener('click', function(){ window.open(this.src, '_blank'); }); });
+            });
+            // Always scroll to top on page load
+            window.addEventListener('load', function(){
+                window.scrollTo(0,0);
+            });
             document.addEventListener('DOMContentLoaded', function(){
                 bindScrollTop();
                 applyLanguage();
