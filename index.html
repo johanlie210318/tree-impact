@@ -768,6 +768,19 @@
             background: rgba(0, 243, 255, 0.15);
         }
 
+        .ba-card {
+            background: rgba(255,255,255,0.85);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .ba-card--good { border: 2px solid rgba(39,174,96,0.35); }
+        .ba-card--bad { border: 2px solid rgba(231,76,60,0.35); }
+        @media (max-width: 480px){
+            .ba-card { padding: 16px; }
+        }
+
         .menu-toggle {
             position: fixed;
             top: 12px;
@@ -1215,7 +1228,7 @@
                 <h2 id="before-after-title" style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #667eea;">🔄 Before & After: Real Impact</h2>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                    <div style="text-align: center;">
+                    <div class="ba-card ba-card--good" style="text-align: center;">
                         <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: nowrap; font-size: clamp(3rem, 12vw, 6rem); margin-bottom: 20px;"><span>🌳</span><span>🌳</span><span>🌳</span></div>
                         <h3 id="with-trees-title" style="font-size: 1.8em; color: #27ae60; margin-bottom: 15px;">WITH TREES</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; text-align: left; font-size: 1.1em; line-height: 2; color: #555;">
@@ -1227,7 +1240,7 @@
                         </ul>
                     </div>
                     
-                    <div style="text-align: center;">
+                    <div class="ba-card ba-card--bad" style="text-align: center;">
                         <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: nowrap; font-size: clamp(3rem, 12vw, 6rem); margin-bottom: 20px;"><span>🪵</span><span>🔥</span><span>💨</span></div>
                         <h3 id="without-trees-title" style="font-size: 1.8em; color: #e74c3c; margin-bottom: 15px;">WITHOUT TREES</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; text-align: left; font-size: 1.1em; line-height: 2; color: #555;">
