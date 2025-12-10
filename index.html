@@ -2024,14 +2024,9 @@
             const scrollTopBtn = document.getElementById('scroll-top-btn');
 
             scrollTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
             });
-            window.addEventListener('scroll', toggleScrollTopBtn);
-            scrollTopBtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-            toggleScrollTopBtn();
         </script>
         <div class="scanline"></div>
         <div class="news-ticker">
