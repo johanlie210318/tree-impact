@@ -2021,11 +2021,12 @@
             }
             document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
             applyLanguage();
-            const scrollTopBtn = document.getElementById('scroll-top-btn');
-
-            scrollTopBtn.addEventListener('click', function() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
+            document.addEventListener('DOMContentLoaded', function(){
+                const scrollTopBtn = document.getElementById('scroll-top-btn');
+                if (!scrollTopBtn) return;
+                scrollTopBtn.addEventListener('click', function(){
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             });
         </script>
         <div class="scanline"></div>
