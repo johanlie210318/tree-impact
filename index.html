@@ -2022,13 +2022,6 @@
             document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
             applyLanguage();
             const scrollTopBtn = document.getElementById('scroll-top-btn');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 500) {
-                    scrollTopBtn.style.display = 'block';
-                } else {
-                    scrollTopBtn.style.display = 'none';
-                }
-            });
 
             scrollTopBtn.addEventListener('click', function() {
                 window.scrollTo({
@@ -2046,6 +2039,6 @@
                 ⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."
             </div>
         </div>
-        <button id="scroll-top-btn" class="scroll-top" style="display: none;">↑ Top</button>
+        <button id="scroll-top-btn" class="scroll-top">↑ Top</button>
     </body>
 </html>
