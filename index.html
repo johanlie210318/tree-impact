@@ -732,6 +732,7 @@
             backdrop-filter: blur(6px);
         }
     </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
@@ -1953,8 +1954,8 @@
                 updateGameDisplay();
                 const helpMsg = window.currentLang === 'id' ? 'Tanam pohon lokal di komunitas Anda, dukung program reforestasi, kurangi konsumsi kertas, dan sebarkan pentingnya pohon.' : 'Plant native trees in your community, support reforestation programs, reduce paper consumption, and spread awareness about the importance of trees!';
                 const shareMsg = window.currentLang === 'id' ? 'Bagikan pesan ini di media sosial, ajak keluarga dan teman, hubungi pejabat setempat, dan dukung organisasi lingkungan.' : 'Share this message on social media, talk to your friends and family, contact local officials, and support environmental organizations!';
-                document.getElementById('action-help-btn').onclick = function(e){ e.preventDefault(); alert(helpMsg); };
-                document.getElementById('action-share-btn').onclick = function(e){ e.preventDefault(); alert(shareMsg); };
+                document.getElementById('action-help-btn').onclick = function(e){ e.preventDefault(); swal({ title: window.currentLang === 'id' ? 'Cara Membantu' : 'How to Help', text: helpMsg, icon: 'info' }); };
+                document.getElementById('action-share-btn').onclick = function(e){ e.preventDefault(); swal({ title: window.currentLang === 'id' ? 'Sebarkan Pesan' : 'Spread the Word', text: shareMsg, icon: 'success' }); };
                 const ticker = document.querySelector('.ticker-content');
                 ticker.textContent = window.currentLang === 'id' ? '⚠️ DARURAT: Sumatra kehilangan 1,6 juta hektare hutan (2001-2024). Banjir bandang menewaskan 500+ pada akhir 2025. Ilmuwan memperingatkan keruntuhan ekosistem yang tak dapat dipulihkan. // BERTINDAK SEKARANG untuk mencegah kehancuran lebih lanjut. // "Kehilangan hutan berarti kehilangan nyawa."' : '⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."';
             }
