@@ -735,11 +735,27 @@
             cursor: pointer;
             backdrop-filter: blur(6px);
         }
+        .scroll-top {
+            position: fixed;
+            bottom: 12px;
+            right: 12px;
+            z-index: 1001;
+            padding: 10px 14px;
+            border-radius: 20px;
+            background: rgba(0, 243, 255, 0.15);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+        }
     </style>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
+    <button id="scroll-top-btn" class="scroll-top" style="display: none;">↑ Top</button>
         <div class="hero">
             <div class="tree-animation">🌳</div>
         <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
@@ -1978,6 +1994,8 @@
                 document.getElementById('action-share-btn').onclick = function(e){ e.preventDefault(); swal({ title: window.currentLang === 'id' ? 'Sebarkan Pesan' : 'Spread the Word', text: shareMsg, icon: 'success' }); };
                 const ticker = document.querySelector('.ticker-content');
                 ticker.textContent = window.currentLang === 'id' ? '⚠️ DARURAT: Sumatra kehilangan 1,6 juta hektare hutan (2001-2024). Banjir bandang menewaskan 500+ pada akhir 2025. Ilmuwan memperingatkan keruntuhan ekosistem yang tak dapat dipulihkan. // BERTINDAK SEKARANG untuk mencegah kehancuran lebih lanjut. // "Kehilangan hutan berarti kehilangan nyawa."' : '⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."';
+                const stBtn = document.getElementById('scroll-top-btn');
+                if (stBtn) { stBtn.textContent = window.currentLang === 'id' ? '↑ Ke atas' : '↑ Top'; }
             }
             function ensureCurrencyWrappers(){
                 const ids = ['oxygen-value','flood-value','air-value','carbon-value','total-value'];
@@ -1993,6 +2011,14 @@
             }
             document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
             applyLanguage();
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            function toggleScrollTopBtn(){
+                const nearBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 80;
+                scrollTopBtn.style.display = nearBottom ? 'block' : 'none';
+            }
+            window.addEventListener('scroll', toggleScrollTopBtn);
+            scrollTopBtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            toggleScrollTopBtn();
         </script>
         <div class="scanline"></div>
         <div class="news-ticker">
