@@ -735,9 +735,10 @@
             cursor: pointer;
             backdrop-filter: blur(6px);
         }
+
         .scroll-top {
             position: fixed;
-            bottom: 72px;
+            bottom: 72px; /* Above the news ticker */
             right: 12px;
             z-index: 2001;
             padding: 12px 16px;
@@ -750,13 +751,19 @@
             cursor: pointer;
             backdrop-filter: blur(6px);
             box-shadow: 0 6px 18px rgba(0, 243, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top:hover {
+            background: rgba(0, 243, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 243, 255, 0.8);
         }
     </style>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
-    <button id="scroll-top-btn" class="scroll-top" style="display: none;">↑ Top</button>
         <div class="hero">
             <div class="tree-animation">🌳</div>
         <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
@@ -1996,7 +2003,9 @@
                 const ticker = document.querySelector('.ticker-content');
                 ticker.textContent = window.currentLang === 'id' ? '⚠️ DARURAT: Sumatra kehilangan 1,6 juta hektare hutan (2001-2024). Banjir bandang menewaskan 500+ pada akhir 2025. Ilmuwan memperingatkan keruntuhan ekosistem yang tak dapat dipulihkan. // BERTINDAK SEKARANG untuk mencegah kehancuran lebih lanjut. // "Kehilangan hutan berarti kehilangan nyawa."' : '⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."';
                 const stBtn = document.getElementById('scroll-top-btn');
-                if (stBtn) { stBtn.textContent = window.currentLang === 'id' ? '↑ Ke atas' : '↑ Top'; }
+                if (stBtn) {
+                    stBtn.textContent = window.currentLang === 'id' ? '↑ Ke atas' : '↑ Top';
+                }
             }
             function ensureCurrencyWrappers(){
                 const ids = ['oxygen-value','flood-value','air-value','carbon-value','total-value'];
@@ -2013,20 +2022,20 @@
             document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
             applyLanguage();
             const scrollTopBtn = document.getElementById('scroll-top-btn');
-            function toggleScrollTopBtn(){
-                const doc = document.documentElement;
-                const scrolled = window.scrollY;
-                const vh = window.innerHeight;
-                const sh = Math.max(doc.scrollHeight, doc.offsetHeight, doc.clientHeight);
-                const atBottom = scrolled + vh >= sh - 5;
-                const progress = (sh - vh) > 0 ? scrolled / (sh - vh) : 1;
-                const nearEnd = progress >= 0.9;
-                const pastHalf = progress >= 0.5;
-                const ticker = document.querySelector('.news-ticker');
-                const offset = ticker ? (ticker.offsetHeight + 16) : 16;
-                scrollTopBtn.style.bottom = offset + 'px';
-                scrollTopBtn.style.display = (atBottom || nearEnd || pastHalf) ? 'block' : 'none';
-            }
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    scrollTopBtn.style.display = 'block';
+                } else {
+                    scrollTopBtn.style.display = 'none';
+                }
+            });
+
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
             window.addEventListener('scroll', toggleScrollTopBtn);
             scrollTopBtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
             toggleScrollTopBtn();
@@ -2037,5 +2046,6 @@
                 ⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."
             </div>
         </div>
+        <button id="scroll-top-btn" class="scroll-top" style="display: none;">↑ Top</button>
     </body>
 </html>
