@@ -11,6 +11,7 @@
                 box-sizing: border-box;
             }
 
+            html { scroll-behavior: smooth; }
             body {
                 font-family: 'Courier New', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 background: linear-gradient(135deg, #050a10 0%, #0b1e3b 100%);
@@ -736,6 +737,35 @@
             backdrop-filter: blur(6px);
         }
 
+        .main-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            right: 84px;
+            z-index: 1002;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 24px;
+            background: rgba(5, 10, 16, 0.6);
+            border: 1px solid #00f3ff;
+            backdrop-filter: blur(6px);
+        }
+
+        .main-nav a {
+            color: #00f3ff;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 6px 10px;
+            border-radius: 16px;
+        }
+
+        .main-nav a:hover {
+            background: rgba(0, 243, 255, 0.15);
+        }
+
         .scroll-top {
             position: fixed;
             bottom: 72px; /* Above the news ticker */
@@ -764,14 +794,26 @@
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
-        <div class="hero">
+    <nav class="main-nav">
+        <a href="#hero">Home</a>
+        <a href="#video">Video</a>
+        <a href="#impact">Impact</a>
+        <a href="#economy">Economy</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#game">Game</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#before-after">Before/After</a>
+        <a href="#daily">Daily</a>
+        <a href="#action">Action</a>
+    </nav>
+        <div id="hero" class="hero">
             <div class="tree-animation">🌳</div>
-        <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
+            <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
             <p id="init-subtitle" class="subtitle" style="letter-spacing: 1px; color: #00f3ff;">// INITIALIZING_ECO_SYSTEM_PROTOCOL...</p>
             <div class="scroll-indicator">↓</div>
         </div>
 
-        <div class="video-feed-section">
+        <div id="video" class="video-feed-section">
         <h2 id="video-title" style="font-family: 'Courier New'; color: #00f3ff; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); font-size: clamp(1.1rem, 6.5vw, 2.2rem); text-align: center; line-height: 1.25; word-break: break-word; overflow-wrap: anywhere;">📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS</h2>
             <div class="video-container">
                 <div class="video-wrapper">
@@ -785,7 +827,7 @@
             </div>
         </div>
 
-        <div class="content">
+        <div id="impact" class="content">
             <div class="container">
         <h2 id="impact-title" style="text-align: center; font-size: 2.5em; margin-bottom: 20px; color: #667eea;">What Does One Tree Do?</h2>
         <p id="impact-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 40px; color: #666;">The impact of a single tree is more powerful than you think</p>
@@ -947,7 +989,7 @@
             </div>
         </div>
 
-        <div style="background: #16213e; padding: 80px 20px; color: white;">
+        <div id="economy" style="background: #16213e; padding: 80px 20px; color: white;">
             <div class="container">
                 <h2 id="economy-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">💰 The Hidden Economy: What We Lost in Sumatra</h2>
                 <p id="economy-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Trees provide FREE services worth billions. Calculate what was destroyed.</p>
@@ -992,7 +1034,7 @@
             </div>
         </div>
 
-        <div style="background: white; padding: 80px 20px;">
+        <div id="timeline" style="background: white; padding: 80px 20px;">
             <div class="container">
                 <h2 id="timeline-title" style="text-align: center; font-size: 3em; margin-bottom: 30px; color: #667eea;">⏳ Time Travel: Your Tree Decision</h2>
                 <p id="timeline-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px; color: #666;">Make a choice today. See its impact in the future.</p>
@@ -1017,7 +1059,7 @@
             </div>
         </div>
 
-        <div style="background: linear-gradient(135deg, #103a52 0%, #0e3b2f 100%); padding: 80px 20px; color: white;">
+        <div id="game" style="background: linear-gradient(135deg, #103a52 0%, #0e3b2f 100%); padding: 80px 20px; color: white;">
             <div class="container">
                 <h2 id="game-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">🎮 Reforestation Challenge Game</h2>
                 <p id="game-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 50px;">Can you restore the forest before the next rainy season?</p>
@@ -1058,7 +1100,7 @@
             </div>
         </div>
 
-        <div class="action-section">
+        <div id="action" class="action-section">
             <div class="container">
                 <h2 id="action-title">Take Action Today</h2>
                 <p id="action-subtitle" style="font-size: 1.3em; margin-bottom: 40px;">Every action counts. Start making a difference now.</p>
@@ -1067,7 +1109,7 @@
             </div>
         </div>
 
-        <div style="background: #2c3e50; padding: 80px 20px; color: white;">
+        <div id="simulator" style="background: #2c3e50; padding: 80px 20px; color: white;">
             <div class="container">
                 <h2 id="sim-title" style="text-align: center; font-size: 3em; margin-bottom: 50px;">🌍 Interactive: Deforestation Simulator</h2>
                 <p id="sim-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Click the trees to cut them down. Watch what happens to the land.</p>
@@ -1104,7 +1146,7 @@
             </div>
         </div>
 
-        <div style="background: white; padding: 80px 20px;">
+        <div id="before-after" style="background: white; padding: 80px 20px;">
             <div class="container">
                 <h2 id="before-after-title" style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #667eea;">🔄 Before & After: Real Impact</h2>
                 
@@ -1136,7 +1178,7 @@
             </div>
         </div>
 
-        <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 80px 20px; color: white;">
+        <div id="daily" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 80px 20px; color: white;">
             <div class="container">
                 <h2 id="daily-title" style="text-align: center; font-size: 3em; margin-bottom: 30px;">⏱️ Your Daily Tree Counter</h2>
                 <p id="daily-subtitle" style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">See what ONE tree does for you RIGHT NOW</p>
