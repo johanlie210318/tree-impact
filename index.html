@@ -739,17 +739,17 @@
             position: fixed;
             bottom: 72px;
             right: 12px;
-            z-index: 1001;
-            padding: 10px 14px;
-            border-radius: 20px;
-            background: rgba(0, 243, 255, 0.15);
-            color: #00f3ff;
+            z-index: 2001;
+            padding: 12px 16px;
+            border-radius: 24px;
+            background: rgba(0, 243, 255, 0.7);
+            color: #050a10;
             border: 1px solid #00f3ff;
             font-weight: 700;
             letter-spacing: 1px;
             cursor: pointer;
             backdrop-filter: blur(6px);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+            box-shadow: 0 6px 18px rgba(0, 243, 255, 0.6);
         }
     </style>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -2021,7 +2021,11 @@
                 const atBottom = scrolled + vh >= sh - 5;
                 const progress = (sh - vh) > 0 ? scrolled / (sh - vh) : 1;
                 const nearEnd = progress >= 0.9;
-                scrollTopBtn.style.display = (atBottom || nearEnd) ? 'block' : 'none';
+                const pastHalf = progress >= 0.5;
+                const ticker = document.querySelector('.news-ticker');
+                const offset = ticker ? (ticker.offsetHeight + 16) : 16;
+                scrollTopBtn.style.bottom = offset + 'px';
+                scrollTopBtn.style.display = (atBottom || nearEnd || pastHalf) ? 'block' : 'none';
             }
             window.addEventListener('scroll', toggleScrollTopBtn);
             scrollTopBtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
