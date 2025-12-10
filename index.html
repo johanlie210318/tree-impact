@@ -2001,7 +2001,9 @@
                 document.getElementById('action-help-btn').onclick = function(e){ e.preventDefault(); swal({ title: window.currentLang === 'id' ? 'Cara Membantu' : 'How to Help', text: helpMsg, icon: 'info' }); };
                 document.getElementById('action-share-btn').onclick = function(e){ e.preventDefault(); swal({ title: window.currentLang === 'id' ? 'Sebarkan Pesan' : 'Spread the Word', text: shareMsg, icon: 'success' }); };
                 const ticker = document.querySelector('.ticker-content');
-                ticker.textContent = window.currentLang === 'id' ? '⚠️ DARURAT: Sumatra kehilangan 1,6 juta hektare hutan (2001-2024). Banjir bandang menewaskan 500+ pada akhir 2025. Ilmuwan memperingatkan keruntuhan ekosistem yang tak dapat dipulihkan. // BERTINDAK SEKARANG untuk mencegah kehancuran lebih lanjut. // "Kehilangan hutan berarti kehilangan nyawa."' : '⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."';
+                if (ticker) {
+                    ticker.textContent = window.currentLang === 'id' ? '⚠️ DARURAT: Sumatra kehilangan 1,6 juta hektare hutan (2001-2024). Banjir bandang menewaskan 500+ pada akhir 2025. Ilmuwan memperingatkan keruntuhan ekosistem yang tak dapat dipulihkan. // BERTINDAK SEKARANG untuk mencegah kehancuran lebih lanjut. // "Kehilangan hutan berarti kehilangan nyawa."' : '⚠️ BREAKING: Sumatra lost 1.6 million hectares of forest (2001-2024). Flash floods kill 500+ in late 2025. Scientists warn of irreversible ecosystem collapse. // ACT NOW to prevent further destruction. // "The loss of forests means the loss of lives."';
+                }
                 const stBtn = document.getElementById('scroll-top-btn');
                 if (stBtn) {
                     stBtn.textContent = window.currentLang === 'id' ? '↑' : '↑';
@@ -2020,13 +2022,25 @@
                 });
             }
             document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
-            applyLanguage();
+            function bindScrollTop(){
+                const btn = document.getElementById('scroll-top-btn');
+                if (!btn) return;
+                const handler = function(e){
+                    e.preventDefault();
+                    try {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } catch (_) {
+                        document.documentElement.scrollTop = 0;
+                        document.body.scrollTop = 0;
+                    }
+                };
+                btn.onclick = handler;
+                btn.addEventListener('touchstart', handler, { passive: true });
+            }
+            bindScrollTop();
             document.addEventListener('DOMContentLoaded', function(){
-                const scrollTopBtn = document.getElementById('scroll-top-btn');
-                if (!scrollTopBtn) return;
-                scrollTopBtn.addEventListener('click', function(){
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
+                bindScrollTop();
+                applyLanguage();
             });
         </script>
         <div class="scanline"></div>
