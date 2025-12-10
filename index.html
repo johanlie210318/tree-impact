@@ -173,46 +173,6 @@
                 box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
             }
 
-            .video-controls {
-                position: absolute;
-                inset: 0;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 12px;
-                z-index: 11;
-                pointer-events: none;
-            }
-            .video-btn {
-                pointer-events: auto;
-                background: rgba(0, 243, 255, 0.6);
-                border: 1px solid #00f3ff;
-                color: #050a10;
-                font-weight: 700;
-                padding: 8px 12px;
-                border-radius: 20px;
-                box-shadow: 0 6px 18px rgba(0, 243, 255, 0.6);
-            }
-            .video-dots {
-                position: absolute;
-                bottom: 12px;
-                left: 0;
-                right: 0;
-                display: flex;
-                gap: 8px;
-                justify-content: center;
-                z-index: 11;
-            }
-            .video-dot {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: rgba(255,255,255,0.5);
-                border: 1px solid #00f3ff;
-                cursor: pointer;
-            }
-            .video-dot.active { background: #00f3ff; }
-
             @keyframes blink {
                 0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c; }
                 50% { opacity: 0.3; text-shadow: none; }
@@ -943,13 +903,9 @@
                     >
                     </iframe>
                 </div>
-                <div class="video-controls">
-                    <button id="video-prev" class="video-btn">◀</button>
-                    <button id="video-next" class="video-btn">▶</button>
-                </div>
-                <div id="video-dots" class="video-dots"></div>
             </div>
         </div>
+
 
         <div id="impact" class="content">
             <div class="container">
@@ -2236,17 +2192,6 @@
                     mt.addEventListener('click', function(){ mm.classList.toggle('open'); });
                     mm.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){ mm.classList.remove('open'); }));
                 }
-                const videoIds = ['zdcVVzP_zvQ','vvPSzUx248Y','0XPruJq_g_o'];
-                let currentVid = 0;
-                const frame = document.getElementById('video-frame');
-                const prev = document.getElementById('video-prev');
-                const next = document.getElementById('video-next');
-                const dotsWrap = document.getElementById('video-dots');
-                const setVid = function(i){ currentVid = (i + videoIds.length) % videoIds.length; frame.src = `https://www.youtube.com/embed/${videoIds[currentVid]}`; Array.from(dotsWrap.children).forEach((d,idx)=>{ d.classList.toggle('active', idx===currentVid); }); };
-                videoIds.forEach((_,i)=>{ const d=document.createElement('div'); d.className='video-dot'; d.addEventListener('click', ()=> setVid(i)); dotsWrap.appendChild(d); });
-                setVid(0);
-                prev.addEventListener('click', function(){ setVid(currentVid-1); });
-                next.addEventListener('click', function(){ setVid(currentVid+1); });
                 document.querySelectorAll('.gallery-image').forEach(img => { img.addEventListener('click', function(){ window.open(this.src, '_blank'); }); });
             });
         </script>
