@@ -142,14 +142,18 @@
                 position: absolute;
                 bottom: 15px;
                 left: 15px;
+                right: 15px;
                 color: #00f3ff;
                 font-family: 'Courier New', monospace;
-                font-size: 0.9em;
+                font-size: clamp(0.75rem, 2.8vw, 0.95rem);
                 z-index: 10;
                 background: rgba(0, 0, 0, 0.7);
                 padding: 4px 8px;
                 pointer-events: none;
                 border-left: 2px solid #00f3ff;
+                white-space: normal;
+                overflow-wrap: anywhere;
+                max-width: calc(100% - 30px);
             }
 
             .video-wrapper {
@@ -744,7 +748,7 @@
         </div>
 
         <div class="video-feed-section">
-        <h2 id="video-title" style="font-family: 'Courier New'; color: #00f3ff; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);">📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS</h2>
+        <h2 id="video-title" style="font-family: 'Courier New'; color: #00f3ff; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); font-size: clamp(1.1rem, 6.5vw, 2.2rem); text-align: center; line-height: 1.25; word-break: break-word; overflow-wrap: anywhere;">📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS</h2>
             <div class="video-container">
                 <div class="video-wrapper">
                     <iframe 
@@ -1082,7 +1086,7 @@
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                     <div style="text-align: center;">
-                        <div style="font-size: 8em; margin-bottom: 20px;">🌳🌳🌳</div>
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: nowrap; font-size: clamp(3rem, 12vw, 6rem); margin-bottom: 20px;"><span>🌳</span><span>🌳</span><span>🌳</span></div>
                         <h3 id="with-trees-title" style="font-size: 1.8em; color: #27ae60; margin-bottom: 15px;">WITH TREES</h3>
                         <ul style="text-align: left; font-size: 1.1em; line-height: 2; color: #555;">
                             <li>✅ Rain absorbed by roots</li>
@@ -1094,7 +1098,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <div style="font-size: 8em; margin-bottom: 20px;">🪵🔥💨</div>
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: nowrap; font-size: clamp(3rem, 12vw, 6rem); margin-bottom: 20px;"><span>🪵</span><span>🔥</span><span>💨</span></div>
                         <h3 id="without-trees-title" style="font-size: 1.8em; color: #e74c3c; margin-bottom: 15px;">WITHOUT TREES</h3>
                         <ul style="text-align: left; font-size: 1.1em; line-height: 2; color: #555;">
                             <li>❌ Rain hits bare ground</li>
