@@ -718,6 +718,9 @@
             #game-area { padding: 16px !important; gap: 8px !important; min-height: 240px !important; }
             #total-value-wrap { font-size: clamp(1.6rem, 7.5vw, 2.6rem) !important; }
             #game-budget-wrap, #game-planted-wrap, #game-days-wrap { font-size: clamp(1.4rem, 6vw, 2.2rem) !important; }
+            .menu-toggle { display: flex; }
+            .top-nav { display: none; max-width: calc(100% - 80px); }
+            .top-nav.open { display: flex; }
         }
         .lang-toggle {
             position: fixed;
@@ -734,11 +737,89 @@
             cursor: pointer;
             backdrop-filter: blur(6px);
         }
+        .menu-toggle {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1002;
+            width: 44px;
+            height: 44px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.35);
+            color: #eaf6ff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 1.2em;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+        }
+        .top-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1001;
+            display: flex;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            overflow-x: auto;
+            max-width: calc(100% - 140px);
+            white-space: nowrap;
+        }
+        .top-nav a {
+            color: #eaf6ff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95em;
+            padding: 6px 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+        }
+        .top-nav a:hover { background: rgba(0,243,255,0.12); border-color: rgba(0,243,255,0.5); }
+        .top-nav a.active { background: rgba(0,243,255,0.22); border-color: rgba(0,243,255,0.8); color: #0ff; }
+        #scroll-top {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            z-index: 1001;
+            width: 44px;
+            height: 44px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 243, 255, 0.15);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            font-size: 1.3em;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+        }
     </style>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
+    <button id="menu-toggle" class="menu-toggle">☰</button>
+    <nav class="top-nav">
+        <a href="#" id="menu-hero" data-target="hero-title">Home</a>
+        <a href="#" id="menu-video" data-target="video-title">Video</a>
+        <a href="#" id="menu-impact" data-target="impact-title">Impact</a>
+        <a href="#" id="menu-sim" data-target="sim-title">Simulator</a>
+        <a href="#" id="menu-economy" data-target="economy-title">Economy</a>
+        <a href="#" id="menu-beforeafter" data-target="before-after-title">Before/After</a>
+        <a href="#" id="menu-timeline" data-target="timeline-title">Timeline</a>
+        <a href="#" id="menu-game" data-target="game-title">Game</a>
+        <a href="#" id="menu-daily" data-target="daily-title">Daily</a>
+        <a href="#" id="menu-action" data-target="action-title">Action</a>
+    </nav>
+    <button id="scroll-top">↑</button>
         <div class="hero">
             <div class="tree-animation">🌳</div>
         <h1 id="hero-title" class="glitch" data-text="The Power of ONE Tree">The Power of ONE Tree</h1>
@@ -1893,6 +1974,16 @@
                 document.getElementById('reset-game-btn').textContent = window.currentLang === 'id' ? '🔄 Reset Permainan' : '🔄 Reset Game';
                 document.getElementById('start-game-btn').textContent = window.currentLang === 'id' ? '▶ Mulai Permainan' : '▶ Start Game';
                 document.getElementById('grow-btn').textContent = window.currentLang === 'id' ? '⏩ Maju Cepat 10 Tahun' : '⏩ Fast Forward 10 Years';
+                document.getElementById('menu-hero').textContent = window.currentLang === 'id' ? 'Beranda' : 'Home';
+                document.getElementById('menu-video').textContent = window.currentLang === 'id' ? 'Video' : 'Video';
+                document.getElementById('menu-impact').textContent = window.currentLang === 'id' ? 'Dampak' : 'Impact';
+                document.getElementById('menu-sim').textContent = window.currentLang === 'id' ? 'Simulator' : 'Simulator';
+                document.getElementById('menu-economy').textContent = window.currentLang === 'id' ? 'Ekonomi' : 'Economy';
+                document.getElementById('menu-beforeafter').textContent = window.currentLang === 'id' ? 'Sebelum/Sesudah' : 'Before/After';
+                document.getElementById('menu-timeline').textContent = window.currentLang === 'id' ? 'Garis Waktu' : 'Timeline';
+                document.getElementById('menu-game').textContent = window.currentLang === 'id' ? 'Permainan' : 'Game';
+                document.getElementById('menu-daily').textContent = window.currentLang === 'id' ? 'Harian' : 'Daily';
+                document.getElementById('menu-action').textContent = window.currentLang === 'id' ? 'Aksi' : 'Action';
                 document.getElementById('hero-title').textContent = window.currentLang === 'id' ? 'Kekuatan SATU Pohon' : 'The Power of ONE Tree';
                 document.getElementById('init-subtitle').textContent = window.currentLang === 'id' ? '// MENGINISIASI PROTOKOL_EKO_SISTEM...' : '// INITIALIZING_ECO_SYSTEM_PROTOCOL...';
                 document.getElementById('video-title').textContent = window.currentLang === 'id' ? '📡 TRANSMISI MASUK // BANJIR SUMATRA' : '📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS';
@@ -2001,3 +2092,49 @@
         </div>
     </body>
 </html>
+            document.querySelectorAll('.top-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = e.currentTarget.getAttribute('data-target');
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.top-nav').classList.remove('open');
+                });
+            });
+            const scrollTopBtn = document.getElementById('scroll-top');
+            scrollTopBtn.addEventListener('click', () => {
+                document.body.scrollIntoView({ behavior: 'smooth' });
+            });
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { scrollTopBtn.style.display = 'flex'; } else { scrollTopBtn.style.display = 'none'; }
+            });
+            const menuToggle = document.getElementById('menu-toggle');
+            const topNav = document.querySelector('.top-nav');
+            menuToggle.addEventListener('click', () => { topNav.classList.toggle('open'); });
+
+            const targets = ['hero-title','video-title','impact-title','sim-title','economy-title','before-after-title','timeline-title','game-title','daily-title','action-title'];
+            const linkMap = {
+                'hero-title': 'menu-hero',
+                'video-title': 'menu-video',
+                'impact-title': 'menu-impact',
+                'sim-title': 'menu-sim',
+                'economy-title': 'menu-economy',
+                'before-after-title': 'menu-beforeafter',
+                'timeline-title': 'menu-timeline',
+                'game-title': 'menu-game',
+                'daily-title': 'menu-daily',
+                'action-title': 'menu-action'
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const linkId = linkMap[id];
+                    if (!linkId) return;
+                    const link = document.getElementById(linkId);
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.top-nav a').forEach(a => a.classList.remove('active'));
+                        if (link) link.classList.add('active');
+                    }
+                });
+            }, { root: null, threshold: 0.6 });
+            targets.forEach(t => { const el = document.getElementById(t); if (el) observer.observe(el); });
