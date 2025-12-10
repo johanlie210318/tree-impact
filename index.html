@@ -173,6 +173,46 @@
                 box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
             }
 
+            .video-controls {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 12px;
+                z-index: 11;
+                pointer-events: none;
+            }
+            .video-btn {
+                pointer-events: auto;
+                background: rgba(0, 243, 255, 0.6);
+                border: 1px solid #00f3ff;
+                color: #050a10;
+                font-weight: 700;
+                padding: 8px 12px;
+                border-radius: 20px;
+                box-shadow: 0 6px 18px rgba(0, 243, 255, 0.6);
+            }
+            .video-dots {
+                position: absolute;
+                bottom: 12px;
+                left: 0;
+                right: 0;
+                display: flex;
+                gap: 8px;
+                justify-content: center;
+                z-index: 11;
+            }
+            .video-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.5);
+                border: 1px solid #00f3ff;
+                cursor: pointer;
+            }
+            .video-dot.active { background: #00f3ff; }
+
             @keyframes blink {
                 0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c; }
                 50% { opacity: 0.3; text-shadow: none; }
@@ -868,6 +908,7 @@
         <a href="#game">Game</a>
         <a href="#simulator">Simulator</a>
         <a href="#before-after">Before/After</a>
+        <a href="#gallery">Gallery</a>
         <a href="#daily">Daily</a>
         <a href="#action">Action</a>
     </nav>
@@ -880,6 +921,7 @@
         <a href="#game">Game</a>
         <a href="#simulator">Simulator</a>
         <a href="#before-after">Before/After</a>
+        <a href="#gallery">Gallery</a>
         <a href="#daily">Daily</a>
         <a href="#action">Action</a>
     </div>
@@ -891,16 +933,21 @@
         </div>
 
         <div id="video" class="video-feed-section">
-        <h2 id="video-title" style="font-family: 'Courier New'; color: #00f3ff; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); font-size: clamp(1.1rem, 6.5vw, 2.2rem); text-align: center; line-height: 1.25; word-break: break-word; overflow-wrap: anywhere;">📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS</h2>
+            <h2 id="video-title" style="font-family: 'Courier New'; color: #00f3ff; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); font-size: clamp(1.1rem, 6.5vw, 2.2rem); text-align: center; line-height: 1.25; word-break: break-word; overflow-wrap: anywhere;">📡 INCOMING_TRANSMISSION // SUMATRA_FLOODS</h2>
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe 
+                    <iframe id="video-frame"
                         src="https://www.youtube.com/embed/zdcVVzP_zvQ" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen
                     >
                     </iframe>
                 </div>
+                <div class="video-controls">
+                    <button id="video-prev" class="video-btn">◀</button>
+                    <button id="video-next" class="video-btn">▶</button>
+                </div>
+                <div id="video-dots" class="video-dots"></div>
             </div>
         </div>
 
@@ -1225,7 +1272,7 @@
 
         <div id="before-after" style="background: white; padding: 80px 20px;">
             <div class="container">
-                <h2 id="before-after-title" style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #667eea;">🔄 Before & After: Real Impact</h2>
+            <h2 id="before-after-title" style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #667eea;">🔄 Before & After: Real Impact</h2>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                     <div class="ba-card ba-card--good" style="text-align: center;">
@@ -1250,6 +1297,29 @@
                             <li>❌ Rivers overflow</li>
                             <li>❌ Disasters strike</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="gallery" style="background: white; padding: 80px 20px;">
+            <div class="container">
+                <h2 id="gallery-title" style="text-align: center; font-size: 3em; margin-bottom: 40px; color: #667eea;">📸 Flood Gallery: Sumatra</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                    <div style="background: rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1);">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bridge%20broken%20due%20to%20flash%20flooding%20in%20North%20Sumatra.jpg" alt="Bridge broken due to flash flooding in North Sumatra" style="width: 100%; display: block; cursor: pointer;" class="gallery-image">
+                    </div>
+                    <div style="background: rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1);">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flood%20in%20Southeast%20Aceh%20Regency,%20Sumatra.jpg" alt="Flood in Southeast Aceh Regency, Sumatra" style="width: 100%; display: block; cursor: pointer;" class="gallery-image">
+                    </div>
+                    <div style="background: rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1);">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/House%20flooded%20in%20North%20Tapanuli,%20Sumatra%20caused%20by%20Cyclone%20Senyar.jpg" alt="House flooded in North Tapanuli, Sumatra" style="width: 100%; display: block; cursor: pointer;" class="gallery-image">
+                    </div>
+                    <div style="background: rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1);">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Landslide%20in%20North%20Tapanuli%20following%20heavy%20rainfall.jpg" alt="Landslide in North Tapanuli following heavy rainfall" style="width: 100%; display: block; cursor: pointer;" class="gallery-image">
+                    </div>
+                    <div style="background: rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1);">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Landslides%20in%20Agam%20Regency,%20West%20Sumatra.jpg" alt="Landslides in Agam Regency, West Sumatra" style="width: 100%; display: block; cursor: pointer;" class="gallery-image">
                     </div>
                 </div>
             </div>
@@ -2166,6 +2236,18 @@
                     mt.addEventListener('click', function(){ mm.classList.toggle('open'); });
                     mm.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){ mm.classList.remove('open'); }));
                 }
+                const videoIds = ['zdcVVzP_zvQ','vvPSzUx248Y','0XPruJq_g_o'];
+                let currentVid = 0;
+                const frame = document.getElementById('video-frame');
+                const prev = document.getElementById('video-prev');
+                const next = document.getElementById('video-next');
+                const dotsWrap = document.getElementById('video-dots');
+                const setVid = function(i){ currentVid = (i + videoIds.length) % videoIds.length; frame.src = `https://www.youtube.com/embed/${videoIds[currentVid]}`; Array.from(dotsWrap.children).forEach((d,idx)=>{ d.classList.toggle('active', idx===currentVid); }); };
+                videoIds.forEach((_,i)=>{ const d=document.createElement('div'); d.className='video-dot'; d.addEventListener('click', ()=> setVid(i)); dotsWrap.appendChild(d); });
+                setVid(0);
+                prev.addEventListener('click', function(){ setVid(currentVid-1); });
+                next.addEventListener('click', function(){ setVid(currentVid+1); });
+                document.querySelectorAll('.gallery-image').forEach(img => { img.addEventListener('click', function(){ window.open(this.src, '_blank'); }); });
             });
         </script>
         <div class="scanline"></div>
@@ -2177,3 +2259,5 @@
         <button id="scroll-top-btn" class="scroll-top">↑</button>
     </body>
 </html>
+                const gt = document.getElementById('gallery-title');
+                if (gt) { gt.textContent = window.currentLang === 'id' ? '📸 Galeri Banjir: Sumatra' : '📸 Flood Gallery: Sumatra'; }
