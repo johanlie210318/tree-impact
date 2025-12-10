@@ -718,10 +718,6 @@
             #game-area { padding: 16px !important; gap: 8px !important; min-height: 240px !important; }
             #total-value-wrap { font-size: clamp(1.6rem, 7.5vw, 2.6rem) !important; }
             #game-budget-wrap, #game-planted-wrap, #game-days-wrap { font-size: clamp(1.4rem, 6vw, 2.2rem) !important; }
-            .menu-toggle { display: flex; }
-            .top-nav { position: fixed; top: 0; left: 0; right: 0; border-radius: 0 0 16px 16px; max-width: 100%; gap: 12px; flex-direction: column; align-items: stretch; padding: 16px 14px; transform: translateY(-120%); transition: transform 0.25s ease; }
-            .top-nav.open { transform: translateY(0); }
-            .top-nav a { font-size: 1em; padding: 10px 12px; }
         }
         .lang-toggle {
             position: fixed;
@@ -737,24 +733,6 @@
             letter-spacing: 1px;
             cursor: pointer;
             backdrop-filter: blur(6px);
-        }
-        .menu-toggle {
-            position: fixed;
-            top: 12px;
-            left: 12px;
-            z-index: 1002;
-            width: 44px;
-            height: 44px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.35);
-            color: #eaf6ff;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            font-size: 1.2em;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
         }
         .top-nav {
             position: fixed;
@@ -783,23 +761,21 @@
             background: rgba(255,255,255,0.08);
         }
         .top-nav a:hover { background: rgba(0,243,255,0.12); border-color: rgba(0,243,255,0.5); }
-        .top-nav a.active { background: rgba(0,243,255,0.22); border-color: rgba(0,243,255,0.8); color: #0ff; }
         #scroll-top {
             position: fixed;
             bottom: 18px;
             right: 18px;
             z-index: 1001;
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             display: none;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(0, 243, 255, 0.25);
+            background: rgba(0, 243, 255, 0.15);
             color: #00f3ff;
             border: 1px solid #00f3ff;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-            font-size: 1.4em;
+            font-size: 1.3em;
             cursor: pointer;
             backdrop-filter: blur(6px);
         }
@@ -808,7 +784,6 @@
     </head>
 <body>
     <button id="lang-toggle" class="lang-toggle">ID</button>
-    <button id="menu-toggle" class="menu-toggle">☰</button>
     <nav class="top-nav">
         <a href="#" id="menu-hero" data-target="hero-title">Home</a>
         <a href="#" id="menu-video" data-target="video-title">Video</a>
@@ -2083,43 +2058,6 @@
                     }
                 });
             }
-            function scrollToTarget(id){
-                const el = document.getElementById(id);
-                if (!el) return;
-                const rect = el.getBoundingClientRect();
-                const top = window.scrollY + rect.top - 68;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }
-            document.querySelectorAll('.top-nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const id = e.currentTarget.getAttribute('data-target');
-                    scrollToTarget(id);
-                    document.querySelector('.top-nav').classList.remove('open');
-                });
-            });
-            const scrollTopBtn = document.getElementById('scroll-top');
-            scrollTopBtn.addEventListener('click', () => { document.body.scrollIntoView({ behavior: 'smooth' }); });
-            window.addEventListener('scroll', () => { if (window.scrollY > 80) { scrollTopBtn.style.display = 'flex'; } else { scrollTopBtn.style.display = 'none'; } });
-            const menuToggle = document.getElementById('menu-toggle');
-            const topNav = document.querySelector('.top-nav');
-            menuToggle.addEventListener('click', () => { topNav.classList.toggle('open'); });
-            const targets = ['hero-title','video-title','impact-title','sim-title','economy-title','before-after-title','timeline-title','game-title','daily-title','action-title'];
-            const linkMap = { 'hero-title': 'menu-hero','video-title': 'menu-video','impact-title': 'menu-impact','sim-title': 'menu-sim','economy-title': 'menu-economy','before-after-title': 'menu-beforeafter','timeline-title': 'menu-timeline','game-title': 'menu-game','daily-title': 'menu-daily','action-title': 'menu-action' };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const id = entry.target.id;
-                    const linkId = linkMap[id];
-                    if (!linkId) return;
-                    const link = document.getElementById(linkId);
-                    if (entry.isIntersecting) {
-                        document.querySelectorAll('.top-nav a').forEach(a => a.classList.remove('active'));
-                        if (link) link.classList.add('active');
-                    }
-                });
-            }, { root: null, threshold: 0.6 });
-            targets.forEach(t => { const el = document.getElementById(t); if (el) observer.observe(el); });
-
             document.getElementById('lang-toggle').addEventListener('click', function(){ window.currentLang = window.currentLang === 'id' ? 'en' : 'id'; this.textContent = window.currentLang === 'id' ? 'EN' : 'ID'; applyLanguage(); });
             applyLanguage();
         </script>
@@ -2131,3 +2069,18 @@
         </div>
     </body>
 </html>
+            document.querySelectorAll('.top-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = e.currentTarget.getAttribute('data-target');
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            const scrollTopBtn = document.getElementById('scroll-top');
+            scrollTopBtn.addEventListener('click', () => {
+                document.body.scrollIntoView({ behavior: 'smooth' });
+            });
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { scrollTopBtn.style.display = 'flex'; } else { scrollTopBtn.style.display = 'none'; }
+            });
